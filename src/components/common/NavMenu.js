@@ -1,19 +1,16 @@
 import React from 'react'
-import { Navbar } from 'react-materialize'
-import { Link } from 'react-router-dom'
-
-import SignedInLinks from './SignedInLinks'
-import SignedOutLinks from './SignedOutLinks'
+import ToppingsList from '../orders/ToppingsList'
+import TeasList from '../orders/TeasList'
+import Cart from '../orders/Cart'
 
 const NavMenu = () => {
   return (
-    <Navbar className="Navbar-wrapper grey darken-3">
-      <div className="container">
-        <Link to='/' className='brand-logo'>RapidMixology</Link>
-        <SignedInLinks />
-        <SignedOutLinks />
-      </div>
-    </Navbar>
+    <div>
+      <h4>Nav Menu</h4>
+      <ToppingsList />
+      <TeasList />
+      <Cart />
+    </div>
   )
 }
 
