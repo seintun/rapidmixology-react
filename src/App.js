@@ -6,7 +6,6 @@ class App extends Component {
     return (
       <div className="App">
         <NavMenu />
-        <h1>Rapid Mixology</h1>
       </div>
     );
   }
