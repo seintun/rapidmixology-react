@@ -19,8 +19,8 @@ export default class SidebarExampleDimmed extends Component {
     return (
       <div>
         <Menu inverted>
-          <Menu.Item>
-            <Icon name="bars" onClick={this.handleShowClick}/>
+          <Menu.Item as='a' onClick={this.handleShowClick}>
+            <Icon name="bars" />
             Menu
           </Menu.Item>
           <Menu.Item>
@@ -49,7 +49,7 @@ export default class SidebarExampleDimmed extends Component {
           width='thin'
         >
 
-        {this.state.signedIn ? <SignedInLinks /> :<SignedOutLinks />}
+        {this.state.signedIn ? <SignedInLinks /> : <SignedOutLinks dashboardDisplay = { this.props.dashboardDisplay }/>}
 
         </Sidebar>
         </div>
