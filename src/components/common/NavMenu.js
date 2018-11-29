@@ -20,7 +20,8 @@ export default class SidebarExampleDimmed extends Component {
       <div>
         <Menu inverted>
           <Menu.Item>
-            <Button primary onClick={this.handleShowClick}>Menu</Button>
+            <Icon name="bars" onClick={this.handleShowClick}/>
+            Menu
           </Menu.Item>
           <Menu.Item>
             <h3>Rapid Mixology</h3>
