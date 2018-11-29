@@ -1,14 +1,12 @@
 import React from 'react'
 import { Segment } from 'semantic-ui-react'
-import OrderProgressBar from '../orders/OrderProgressBar'
-import TeasList from './TeasList'
-import ToppingsList from './ToppingsList'
-import Ingredients from './Ingredients'
+import TeasList from './customizeDrink/TeasList'
+import ToppingsList from './customizeDrink/ToppingsList'
+import Ingredients from './customizeDrink/Ingredients'
 
-const ContainerExampleContainer = () => (
+const CustomizeDrink = () => (
   <div>
     <Segment.Group>
-      <OrderProgressBar />
       <Segment>
         <h4>Tea Selection <em>(Pick one)</em>:</h4>
         <TeasList />
@@ -21,8 +19,7 @@ const ContainerExampleContainer = () => (
         <Ingredients />
       </Segment>
     </Segment.Group>
-    
   </div>
 )
 
-export default ContainerExampleContainer
+export default CustomizeDrink

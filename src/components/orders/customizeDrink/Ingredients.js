@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Label, Button, Segment } from 'semantic-ui-react'
+import { Label, Button, Icon, Segment } from 'semantic-ui-react'
 
 export default class Ingredients extends Component {
   state= {
@@ -38,8 +38,8 @@ export default class Ingredients extends Component {
             <Button onClick={ this.handleMinusSugarClick }>Less</Button>
             <Button.Or />
             <Button positive onClick={ this.handlePlusSugarClick }>More</Button>
-            <Label image>
-              <img src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />
+            <Label>
+              <Icon name='cubes' />
               Sugar Level: { this.state.sugar * 100 }%
             </Label>
           </Button.Group>
@@ -49,8 +49,8 @@ export default class Ingredients extends Component {
             <Button onClick={this.handleMinusIceClick}>Less</Button>
             <Button.Or />
             <Button positive onClick={this.handlePlusIceClick}>More</Button>
-            <Label image>
-              <img src='https://react.semantic-ui.com/images/avatar/small/joe.jpg' />
+            <Label>
+              <Icon name='snowflake' />
               Ice Level: {this.state.ice * 100}%
             </Label>
           </Button.Group>
