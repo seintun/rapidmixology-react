@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Form, Button, Message, FormGroup } from 'semantic-ui-react'
+import firebase from "firebase";
 
 export default class Register extends Component {
   state= {

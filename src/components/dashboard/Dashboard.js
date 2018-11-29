@@ -7,8 +7,8 @@ import Login from '../auth/Login'
 export default class Dashboard extends Component {
   state= {
     registerDisplay: false,
-    loginDisplay: false,
-    orderFlowDisplay: true
+    loginDisplay: true,
+    orderFlowDisplay: false
   }
   render() {
     return (
