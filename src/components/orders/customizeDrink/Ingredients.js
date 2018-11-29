@@ -35,9 +35,15 @@ export default class Ingredients extends Component {
         </Segment>
         <Segment>
           <Button.Group>
-            <Button onClick={ this.handleMinusSugarClick }>Less</Button>
+            <Button onClick={ this.handleMinusSugarClick }>
+              <Icon name='minus square' />
+              Less
+            </Button>
             <Button.Or />
-            <Button positive onClick={ this.handlePlusSugarClick }>More</Button>
+            <Button positive onClick={ this.handlePlusSugarClick }>
+              <Icon name='plus square' />
+              More
+            </Button>
             <Label>
               <Icon name='cubes' />
               Sugar Level: { this.state.sugar * 100 }%
@@ -46,9 +52,15 @@ export default class Ingredients extends Component {
         </Segment>
         <Segment>
           <Button.Group>
-            <Button onClick={this.handleMinusIceClick}>Less</Button>
+            <Button onClick={this.handleMinusIceClick}>
+              <Icon name='minus square' />
+              Less
+            </Button>
             <Button.Or />
-            <Button positive onClick={this.handlePlusIceClick}>More</Button>
+            <Button positive onClick={this.handlePlusIceClick}>
+              <Icon name='plus square' />
+              More
+            </Button>
             <Label>
               <Icon name='snowflake' />
               Ice Level: {this.state.ice * 100}%
