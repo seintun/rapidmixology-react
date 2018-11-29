@@ -6,7 +6,7 @@ const OrderProgressBar = () => (
     <Step completed>
       <Icon name='coffee' />
       <Step.Content>
-        <Step.Title>Customize</Step.Title>
+        <Step.Title>Customize Drink</Step.Title>
       </Step.Content>
     </Step>
     <Step active>
