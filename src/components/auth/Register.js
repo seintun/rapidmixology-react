@@ -20,7 +20,7 @@ export default class Register extends Component {
     return (
       <Container>
         <h1>Join Us by registering here!</h1>
-        <Form success warning error>
+        <Form success>
           <Form.Group>
             <Form.Input id='firstName' label='First name' placeholder='First Name' width={8} onChange={this.handleOnChange}/>
             <Form.Input id='lastName' label='Last Name' placeholder='Last Name' width={8} onChange={this.handleOnChange}/>
