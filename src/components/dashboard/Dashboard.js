@@ -11,8 +11,9 @@ class Dashboard extends Component {
     return (
       <div>
         <button onClick={this.props.toggleOFD}>Click Me</button>
-
+    
         { this.props.orderFlowDisplay ? <OrderFlow /> : false }
+
         { this.props.registerDisplay ? <Register /> : false }
         { this.props.loginDisplay ?  <Login /> : false }
       </div>

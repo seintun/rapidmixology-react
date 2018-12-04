@@ -19,9 +19,9 @@ export default class SignedInLinks extends Component {
             <Icon name='history' /> Order History
           </Menu.Item>
         </NavLink>
-        <NavLink to='/setting'>
+        <NavLink to='/profile'>
           <Menu.Item as='a'>
-            <Icon name='setting' />  Settings
+            <Icon name='user outline' />  Profile
           </Menu.Item>
         </NavLink>
         <NavLink to='/feedback'>

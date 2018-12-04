@@ -19,7 +19,7 @@ export default class Register extends Component {
         <h1>Log In here!</h1>
         <Form success warning error>
           <FormGroup>
-            <Form.Input id='email' label='Email' placeholder='joe@schmoe.com' type='email' width={8} onChange={this.handleOnChange}/>
+            <Form.Input id='email' label='Email' placeholder='joe@email.com' type='email' width={8} onChange={this.handleOnChange}/>
             <Form.Input id='password' label='Password' type='password' placeholder='Confirm Password' width={8} onChange={this.handleOnChange}/>
           </FormGroup>
           <Form.Field control={ Button } onClick={ this.handleOnSubmit }>Submit</Form.Field>
