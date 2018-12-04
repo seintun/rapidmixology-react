@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Icon, Menu, Sidebar } from 'semantic-ui-react'
+import { Icon, Menu, Sidebar } from 'semantic-ui-react'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 
