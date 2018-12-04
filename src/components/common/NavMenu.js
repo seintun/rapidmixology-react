@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Icon, Menu, Sidebar } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 
@@ -23,13 +24,16 @@ export default class SidebarExampleDimmed extends Component {
             <Icon name="bars" />
             Menu
           </Menu.Item>
-          <Menu.Item>
-            <h3>Rapid Mixology</h3>
-          </Menu.Item>
+          <NavLink to='/'>
+            <Menu.Item>
+              <h3>Rapid Mixology</h3>
+            </Menu.Item>
+          </NavLink>
           {this.state.signedIn 
             ? <Menu.Item className="right" as='a' onClick={this.handleSignedIn}>
-                <Icon name="log out"></Icon>
-                logout
+                <NavLink to='/'>
+                  <Icon name="log out"/>logout
+                </NavLink> 
               </Menu.Item>
             : <Menu.Item className="right" as='a' onClick={this.handleSignedIn}>
                 <Icon name="user secret"></Icon>
