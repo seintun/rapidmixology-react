@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Menu, Icon } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
 
 export default class SignedInLinks extends Component {
   render() {
@@ -8,30 +9,27 @@ export default class SignedInLinks extends Component {
         <Menu.Item>
           Welcome! Sein
         </Menu.Item>
-        <Menu.Item as='a'>
-          <Icon name='home' />
-          Home
+        <NavLink to='/'>
+          <Menu.Item as='a'>
+            <Icon name='home' /> Home
+          </Menu.Item>
+        </NavLink>
+        <NavLink to='/history'>
+          <Menu.Item as='a'>
+            <Icon name='history' /> Order History
+          </Menu.Item>
+        </NavLink>
+        <NavLink to='/setting'>
+          <Menu.Item as='a'>
+            <Icon name='setting' />  Settings
+          </Menu.Item>
+        </NavLink>
+        <NavLink to='/feedback'>
+          <Menu.Item as='a'>
+            <Icon name='edit outline' />  Feedback
         </Menu.Item>
-        <Menu.Item as='a'>
-          <Icon name='history' />
-          Order History
-        </Menu.Item>
-        <Menu.Item as='a'>
-          <Icon name='user' />
-          Profile
-        </Menu.Item>
-        <Menu.Item as='a'>
-          <Icon name='setting' />
-          Settings
-        </Menu.Item>
-        <Menu.Item as='a'>
-          <Icon name='edit outline' />
-          Feedback
-        </Menu.Item>
-        <Menu.Item>
-          Rapid Mixology <br />
-          © 2018
-        </Menu.Item>
+        </NavLink>
+        <Menu.Item> Rapid Mixology <br /> © 2018 </Menu.Item>
       </div>
     )
   }

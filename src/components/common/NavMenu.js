@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Icon, Menu, Sidebar } from 'semantic-ui-react'
+import { Icon, Menu, Sidebar } from 'semantic-ui-react'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 
@@ -49,7 +49,7 @@ export default class SidebarExampleDimmed extends Component {
           width='thin'
         >
 
-        {this.state.signedIn ? <SignedInLinks /> : <SignedOutLinks dashboardDisplay = { this.props.dashboardDisplay }/>}
+        {this.state.signedIn ? <SignedInLinks /> : <SignedOutLinks />}
 
         </Sidebar>
         </div>
