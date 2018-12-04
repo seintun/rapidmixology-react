@@ -1,5 +1,5 @@
 const initialState = {
-  registerDisplay: true,
+  registerDisplay: false,
   loginDisplay: false,
   orderFlowDisplay: true
 };

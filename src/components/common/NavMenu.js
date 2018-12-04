@@ -49,7 +49,7 @@ export default class SidebarExampleDimmed extends Component {
           width='thin'
         >
 
-        {this.state.signedIn ? <SignedInLinks /> : <SignedOutLinks dashboardDisplay = { this.props.dashboardDisplay }/>}
+        {this.state.signedIn ? <SignedInLinks /> : <SignedOutLinks />}
 
         </Sidebar>
         </div>
