@@ -11,7 +11,6 @@ const extra = (
 
 const UserProfile = (props) => {
   const userInfo = props.user.userLoggedIn
-  console.log(userInfo, '####')
   return (
   <Card
     image='https://jooinn.com/images/portrait-102.jpg'

@@ -1,21 +1,47 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Dropdown } from 'semantic-ui-react'
+import Topping from './Toppings'
 
-const toppingOptions = [
-  { key: 'Boba', text: 'Boba', value: 'Boba' },
-  { key: 'pudding', text: 'Pudding', value: 'pudding' },
-  { key: 'natajelly', text: 'Nata Jelly', value: 'natajelly' },
-  { key: 'mungbean', text: 'Mung Bean', value: 'mungbean' },
-  { key: 'herbaljelly', text: 'Herbal Jelly', value: 'herbaljelly' },
-  { key: 'grapepb', text: 'Grape Popping Bubbles', value: 'grapepb' },
-  { key: 'mangopb', text: 'Mango Popping Bubbles', value: 'mangopb' },
-  { key: 'coffeepb', text: 'Coffee Popping Bubbles', value: 'coffeepb' },
-  { key: 'aloejelly', text: 'Aloe Jelly', value: 'aloejelly' },
-  { key: 'figjelly', text: 'Fig Jelly', value: 'figjelly' },
-]
+export default class ToppingsList extends Component {
+  state = {
+    toppingOptions : [
+      { id: '1', text: 'Boba', value: 'Boba' },
+      { id: '2', text: 'Pudding', value: 'pudding' },
+      { id: '3', text: 'Nata Jelly', value: 'natajelly' },
+      { id: '4', text: 'Mung Bean', value: 'mungbean' },
+      { id: '5', text: 'Herbal Jelly', value: 'herbaljelly' },
+      { id: '6', text: 'Grape Popping Bubbles', value: 'grapepb' },
+      { id: '7', text: 'Mango Popping Bubbles', value: 'mangopb' },
+      { id: '8', text: 'Coffee Popping Bubbles', value: 'coffeepb' },
+      { id: '9', text: 'Aloe Jelly', value: 'aloejelly' },
+      { id: '10', text: 'Fig Jelly', value: 'figjelly' },
+    ],
+    toppings: []
+  }
 
-const ToppingsList = () => (
-  <Dropdown placeholder='Select any Toppings' fluid multiple selection options={toppingOptions} />
-)
+  handleChange = (event, data) => {
+    console.log(data, this.state, '#####')
+    this.setState({toppings: data.value}, () => {console.log(this.state, '####')})
 
-export default ToppingsList
+  }
+  handleCheck = (e) => {
+    e.preventDefault();
+  }
+
+  render() {
+    return (
+      <div>
+        <Dropdown placeholder='Select any Toppings' fluid multiple selection options={this.state.toppingOptions} onChange={this.handleChange}/>
+        <ul>
+          {this.state.toppings.map(topping => {
+            let top = this.state.toppingOptions.find(toppingFinder => {
+              return toppingFinder.value === topping
+            })
+            console.log(top, 'FIND ME')
+            return(<Topping key={top.id} topping={ top }/>)
+            })}
+        </ul>
+      </div> 
+    )
+  }
+}

@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Toppings = () => {
+const Toppings = (props) => {
   return (
     <div>
-      <h5>Display every fruit and topping</h5>
+      <h5>{props.topping.text}</h5>
+      <label htmlFor="">Quantity</label>
+      <input type="text"/>
     </div>
   )
 }

@@ -19,7 +19,8 @@ export default class OrderFlow extends Component {
         value: 'Meyer Berry Sencha',
         image: { avatar: true, src: 'https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568134-stock-illustration-male-face-avatar-logo-template.jpg' },
       }
-    ]
+    ],
+    tea: ''
   }
 
   handleChange = (event, data) => {
@@ -29,6 +30,7 @@ export default class OrderFlow extends Component {
   handleCheck = (e) => {
     e.preventDefault();
   }
+  
   render() {
     return (
       <div>
