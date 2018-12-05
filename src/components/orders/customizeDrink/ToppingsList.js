@@ -20,27 +20,31 @@ export default class ToppingsList extends Component {
   }
 
   handleChange = (event, data) => {
-    console.log(data, this.state, '#####')
-    this.setState({toppings: data.value}, () => {console.log(this.state, '####')})
-
+    this.setState({toppings: data.value})
   }
   handleCheck = (e) => {
     e.preventDefault();
+  }
+  handleQuantity = () => {
+
   }
 
   render() {
     return (
       <div>
-        <Dropdown placeholder='Select any Toppings' fluid multiple selection options={this.state.toppingOptions} onChange={this.handleChange}/>
-        <ul>
-          {this.state.toppings.map(topping => {
-            let top = this.state.toppingOptions.find(toppingFinder => {
-              return toppingFinder.value === topping
-            })
-            console.log(top, 'FIND ME')
-            return(<Topping key={top.id} topping={ top }/>)
-            })}
-        </ul>
+        <Dropdown placeholder='Select any Toppings' 
+          fluid multiple selection 
+          options={this.state.toppingOptions} 
+          onChange={this.handleChange}
+        />
+      <div>
+        {this.state.toppings.map(topping => {
+          let toppingInfo = this.state.toppingOptions.find(toppingFinder => {
+            return toppingFinder.value === topping
+          })
+          return <Topping key={toppingInfo.id} topping={ toppingInfo }/>
+        })}
+      </div>
       </div> 
     )
   }
