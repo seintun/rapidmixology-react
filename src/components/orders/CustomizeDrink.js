@@ -10,7 +10,6 @@ export default class CustomizeDrink extends Component {
       <div>
         <Segment.Group>
           <Segment>
-            <h4>Tea Selection <em>(Pick one)</em>:</h4>
             <TeasList />
           </Segment>
           <Segment>
