@@ -19,16 +19,26 @@ export default class OrderFlow extends Component {
         value: 'Meyer Berry Sencha',
         image: { avatar: true, src: 'https://st2.depositphotos.com/9223672/12056/v/950/depositphotos_120568134-stock-illustration-male-face-avatar-logo-template.jpg' },
       }
-    ]
+    ],
+    tea: ''
   }
 
-  // handleChange = (event, data) => {
-  //   this.setState({value: data.value});
-  // }
+  handleChange = (event, data) => {
+    this.setState({tea: data.value})
 
+  }
+  handleCheck = (e) => {
+    e.preventDefault();
+  }
+  
   render() {
     return (
-      <Dropdown placeholder='Select the tea type' fluid selection options={this.state.teaOptions}/>
+      <div>
+        <h4>
+          Tea Selection <em>(Pick one)</em>: <span> {this.state.tea}</span>
+        </h4>
+        <Dropdown placeholder='Select the tea type' fluid selection options={this.state.teaOptions} onChange={this.handleChange}/>
+      </div>
   )
 }
 }

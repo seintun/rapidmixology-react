@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Form, Button, Message, FormGroup } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
 import { userLogin } from './auth.actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -18,21 +19,27 @@ class Login extends Component {
   }
   
   render() {
-    console.log(this.state, '@@@')
+    const { user } = this.props;
     return (
-      <Container>
-        <h1>Log In here!</h1>
-        <Form success warning error>
-          <FormGroup>
-            <Form.Input id='userName' label='Username' placeholder='username' type='text' width={8} onChange={this.handleOnChange}/>
-            <Form.Input id='password' label='Password' type='password' placeholder='Confirm Password' width={8} onChange={this.handleOnChange}/>
-          </FormGroup>
-          <Form.Field control={ Button } onClick={ this.handleOnSubmit }>Submit</Form.Field>
-          <Message success header='Successfully logged in'/>
-          <Message warning header='Missing data entry!' content='One or more fields is missing data, please filled them completely.'/>
-          <Message error header='Action Forbidden!' content='Incorrect email or password!'/>
-        </Form>
-      </Container>
+      <div>
+        { user && user.userLoggedIn
+          ? <Redirect to='/profile'></Redirect> 
+          : <Container>
+              <h1>Log In here!</h1>
+              <Form success warning error>
+                <Message success header='Successfully logged in'/>
+                <Message warning header='Missing data entry!' content='One or more fields is missing data, please filled them completely.'/>
+                <Message error header='Action Forbidden!' content='Incorrect email or password!'/>
+      
+                <FormGroup>
+                  <Form.Input id='userName' label='Username' placeholder='username' type='text' width={8} onChange={this.handleOnChange}/>
+                  <Form.Input id='password' label='Password' type='password' placeholder='Confirm Password' width={8} onChange={this.handleOnChange}/>
+                </FormGroup>
+                <Form.Field control={ Button } onClick={ this.handleOnSubmit }>Submit</Form.Field>
+              </Form>
+            </Container>
+        }
+      </div>
     )
   }
 }
@@ -40,8 +47,10 @@ class Login extends Component {
 const mapDispatchToProps = dispatch => ({
   userLogin: bindActionCreators(userLogin, dispatch)
 })
-
+const mapStateToProps = state => ({
+  ...state.auth
+})
 export default connect(
-  null, 
+  mapStateToProps, 
   mapDispatchToProps
 )(Login)

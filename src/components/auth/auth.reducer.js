@@ -3,7 +3,7 @@ import {
 } from './auth.actions'
 
 const initialState = {
-
+  user: {},
 };
 
 const authReducer = (state = initialState, action) => {
