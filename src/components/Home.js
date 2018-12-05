@@ -2,16 +2,15 @@ import React from 'react'
 import { Image, Container } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
-const ImageExampleLink = () => (
+const customizeDrinkImage = () => (
   <Container>
     <NavLink to='/orders'>
       <Image
-        src='https://www.personalizationmall.com/cat_image/300/14132-31727-160411090354.jpg'
-        as='a'
+        src='https://www.theadultman.com/wp-content/uploads/2017/03/manly-cocktails.jpg'
         size='medium'
       />
     </NavLink>
   </Container>
 )
 
-export default ImageExampleLink
+export default customizeDrinkImage

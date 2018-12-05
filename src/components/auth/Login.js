@@ -1,25 +1,30 @@
 import React, { Component } from 'react'
 import { Container, Form, Button, Message, FormGroup } from 'semantic-ui-react'
+import { userLogin } from './auth.actions'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-export default class Register extends Component {
+class Login extends Component {
   state= {
-    email: '',
+    userName: '',
     password: '',
   }
   handleOnChange = e => {
     this.setState({ [e.target.id]: e.target.value })
   }
-  handleOnSubmit = () => {
-    console.log('Form Submitted!')
+  handleOnSubmit = (e) => {
+    e.preventDefault()
+    this.props.userLogin(this.state)
   }
-
+  
   render() {
+    console.log(this.state, '@@@')
     return (
       <Container>
         <h1>Log In here!</h1>
         <Form success warning error>
           <FormGroup>
-            <Form.Input id='email' label='Email' placeholder='joe@schmoe.com' type='email' width={8} onChange={this.handleOnChange}/>
+            <Form.Input id='userName' label='Username' placeholder='username' type='text' width={8} onChange={this.handleOnChange}/>
             <Form.Input id='password' label='Password' type='password' placeholder='Confirm Password' width={8} onChange={this.handleOnChange}/>
           </FormGroup>
           <Form.Field control={ Button } onClick={ this.handleOnSubmit }>Submit</Form.Field>
@@ -31,3 +36,12 @@ export default class Register extends Component {
     )
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  userLogin: bindActionCreators(userLogin, dispatch)
+})
+
+export default connect(
+  null, 
+  mapDispatchToProps
+)(Login)

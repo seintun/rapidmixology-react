@@ -1,10 +1,5 @@
 import React from 'react'
-import { Container, Form, Input, TextArea, Button, Select } from 'semantic-ui-react'
-
-const genderOptions = [
-  { key: 'm', text: 'Male', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
-]
+import { Container, Form, Input, TextArea, Button } from 'semantic-ui-react'
 
 const FormExampleFieldControlId = () => (
   <Container>
@@ -22,14 +17,6 @@ const FormExampleFieldControlId = () => (
           label='Last name'
           placeholder='Last name'
         />
-        <Form.Field
-          control={Select}
-          options={genderOptions}
-          label={{ children: 'Gender', htmlFor: 'form-select-control-gender' }}
-          placeholder='Gender'
-          search
-          searchInput={{ id: 'form-select-control-gender' }}
-        />
       </Form.Group>
       <Form.Field
         id='form-textarea-control-opinion'
@@ -41,7 +28,6 @@ const FormExampleFieldControlId = () => (
         id='form-button-control-public'
         control={Button}
         content='Confirm'
-        label='Label with htmlFor'
       />
     </Form>
   </Container>

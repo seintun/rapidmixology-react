@@ -11,23 +11,24 @@ class Dashboard extends Component {
     return (
       <div>
         <button onClick={this.props.toggleOFD}>Click Me</button>
-
+    
         { this.props.orderFlowDisplay ? <OrderFlow /> : false }
+
         { this.props.registerDisplay ? <Register /> : false }
         { this.props.loginDisplay ?  <Login /> : false }
       </div>
     )
   }
 }
-const mapStatetoProps  = state => ({
+const mapStateToProps  = state => ({
   ...state.dashboard
 })
 
-const mapDispatchtoProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   toggleOFD: () => dispatch(orderFlowDisplay())
 })
 
 export default connect(
-  mapStatetoProps,
-  mapDispatchtoProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Dashboard)
