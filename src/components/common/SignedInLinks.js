@@ -10,22 +10,22 @@ export default class SignedInLinks extends Component {
           Welcome! Sein
         </Menu.Item>
         <NavLink to='/'>
-          <Menu.Item as='a'>
+          <Menu.Item>
             <Icon name='home' /> Home
           </Menu.Item>
         </NavLink>
         <NavLink to='/history'>
-          <Menu.Item as='a'>
+          <Menu.Item>
             <Icon name='history' /> Order History
           </Menu.Item>
         </NavLink>
         <NavLink to='/profile'>
-          <Menu.Item as='a'>
+          <Menu.Item>
             <Icon name='user outline' />  Profile
           </Menu.Item>
         </NavLink>
         <NavLink to='/feedback'>
-          <Menu.Item as='a'>
+          <Menu.Item>
             <Icon name='edit outline' />  Feedback
         </Menu.Item>
         </NavLink>

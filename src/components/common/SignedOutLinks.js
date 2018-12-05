@@ -10,24 +10,24 @@ export default class SignedOutLinks extends Component {
           Welcome to Rapid Mixology!
         </Menu.Item>
         <NavLink to='/'>
-          <Menu.Item as='a'>
+          <Menu.Item>
             <Icon name='home' /> Home
           </Menu.Item>
         </NavLink>
         <NavLink to='/register'>
-          <Menu.Item as='a'>
+          <Menu.Item>
             <Icon name='user plus' />
             Register
           </Menu.Item>
         </NavLink>
         <NavLink to='/login'>
-          <Menu.Item as='a'>
+          <Menu.Item>
             <Icon name='lock open' />
             Log-In
           </Menu.Item>
         </NavLink>
         <NavLink to='/feedback'>
-          <Menu.Item as='a'>
+          <Menu.Item>
             <Icon name='edit outline' />
             Feedback
           </Menu.Item>

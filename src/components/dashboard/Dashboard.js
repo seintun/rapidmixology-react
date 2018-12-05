@@ -20,15 +20,15 @@ class Dashboard extends Component {
     )
   }
 }
-const mapStatetoProps  = state => ({
+const mapStateToProps  = state => ({
   ...state.dashboard
 })
 
-const mapDispatchtoProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   toggleOFD: () => dispatch(orderFlowDisplay())
 })
 
 export default connect(
-  mapStatetoProps,
-  mapDispatchtoProps
+  mapStateToProps,
+  mapDispatchToProps
 )(Dashboard)

@@ -2,10 +2,10 @@ import React from 'react'
 import { Card, Icon } from 'semantic-ui-react'
 
 const extra = (
-  <a>
+  <div>
     <Icon name='user' />
     Infinity Friends
-  </a>
+  </div>
 )
 
 const profileCard = () => (

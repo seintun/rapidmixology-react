@@ -20,7 +20,7 @@ export default class SidebarExampleDimmed extends Component {
     return (
       <div>
         <Menu inverted>
-          <Menu.Item as='a' onClick={this.handleShowClick}>
+          <Menu.Item onClick={this.handleShowClick}>
             <Icon name="bars" />
             Menu
           </Menu.Item>
@@ -30,12 +30,12 @@ export default class SidebarExampleDimmed extends Component {
             </Menu.Item>
           </NavLink>
           {this.state.signedIn 
-            ? <Menu.Item className="right" as='a' onClick={this.handleSignedIn}>
+            ? <Menu.Item className="right" onClick={this.handleSignedIn}>
                 <NavLink to='/'>
                   <Icon name="log out"/>logout
                 </NavLink> 
               </Menu.Item>
-            : <Menu.Item className="right" as='a' onClick={this.handleSignedIn}>
+            : <Menu.Item className="right" onClick={this.handleSignedIn}>
                 <Icon name="user secret"></Icon>
                 Admin Auto
               </Menu.Item>

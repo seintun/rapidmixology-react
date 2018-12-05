@@ -7,7 +7,6 @@ const customizeDrinkImage = () => (
     <NavLink to='/orders'>
       <Image
         src='https://www.theadultman.com/wp-content/uploads/2017/03/manly-cocktails.jpg'
-        as='a'
         size='medium'
       />
     </NavLink>
