@@ -27,17 +27,19 @@ export default class OrderFlow extends Component {
     this.setState({tea: data.value})
 
   }
-  handleCheck = (e) => {
-    e.preventDefault();
+  componentDidMount() {
+    this.props.fetchTeas()
   }
-  
   render() {
     return (
       <div>
         <h4>
           Tea Selection <em>(Pick one)</em>: <span> {this.state.tea}</span>
         </h4>
-        <Dropdown placeholder='Select the tea type' fluid selection options={this.state.teaOptions} onChange={this.handleChange}/>
+        <Dropdown placeholder='Select the tea type' 
+          fluid selection options={this.props.teas} 
+          onChange={this.handleChange}
+        />
       </div>
   )
 }
