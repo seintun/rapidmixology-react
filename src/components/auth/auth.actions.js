@@ -12,6 +12,7 @@ export const userLogin = ({userName, password}) => {
         body: JSON.stringify({userName, password})
       })
       let userObject = await response.json()
+      console.log(userObject, '$$$$$')
       localStorage.setItem("token", userObject.token)
       dispatch({
         type: USER_LOGIN_SUCCESS,

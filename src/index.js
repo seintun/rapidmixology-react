@@ -8,8 +8,10 @@ import 'semantic-ui-css/semantic.min.css';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+// import getAuth from '.actions/auth/getAuth'
 const store = createStore(rootReducer, applyMiddleware(thunk) )
+
+// store.dispatch(getAuth())
 
 ReactDOM.render(
   <Provider store={ store }>
