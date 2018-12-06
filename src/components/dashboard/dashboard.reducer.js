@@ -1,16 +1,32 @@
 const initialState = {
-  registerDisplay: false,
-  loginDisplay: false,
-  orderFlowDisplay: true
+  customizeDrinkDisplay: true,
+  userinfoDisplay: false,
+  checkoutDisplay: false
 };
 
 const dashboardReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'OVERFLOW_DISPLAY_TOGGLE':
+    case 'CUSTOMIZE_DRINK_DISPLAY':
       return {
         ...state,
-        orderFlowDisplay: !state.orderFlowDisplay
+        customizeDrinkDisplay: true,
+        userinfoDisplay: false,
+        checkoutDisplay: false
       }
+    case 'USERINFO_DISPLAY':
+    return {
+      ...state,
+      customizeDrinkDisplay: false,
+      userinfoDisplay: true,
+      checkoutDisplay: false
+    }
+    case 'CHECKOUT_DISPLAY':
+    return {
+      ...state,
+      customizeDrinkDisplay: false,
+      userinfoDisplay: false,
+      checkoutDisplay: true
+    }
     default:
       return state
   }

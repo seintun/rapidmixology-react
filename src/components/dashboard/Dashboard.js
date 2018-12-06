@@ -1,26 +1,32 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { orderFlowDisplay } from './dashboard.actions'
+import { customizeDrinkDisplay, userinfoDisplay, checkoutDisplay } from './dashboard.actions'
 import OrderProgressBar from '../orders/OrderProgressBar'
 import OrderNavigationFooter from '../orders/OrderNavigationFooter'
 import CustomizeDrink from '../orders/CustomizeDrink'
-import Register from '../auth/Register'
-import Login from '../auth/Login'
+import Checkout from '../orders/Checkout'
+import UserInfo from '../orders/UserInfo';
+
 class Dashboard extends Component {
   
   render() {
     return (
       <div>
-        <OrderProgressBar />
-        <button onClick={this.props.toggleOFD}>OFD</button>
-        <button onClick={this.props.toggleLOGIN}>LOGIN</button>
-        <button onClick={this.props.toggleREGISTER}>REGISTER</button>
+        <OrderProgressBar
+          toggleCUSTOMIZE={this.props.toggleCUSTOMIZE}
+          toggleUSERINFO={this.props.toggleUSERINFO}
+          toggleCHECKOUT={this.props.toggleCHECKOUT}
+        />
     
-        { this.props.orderFlowDisplay ? <CustomizeDrink /> : false }
-
-        { this.props.registerDisplay ? <Register /> : false }
-        { this.props.loginDisplay ?  <Login /> : false }
-        <OrderNavigationFooter />
+        { this.props.customizeDrinkDisplay ? <CustomizeDrink /> : false }
+        { this.props.userinfoDisplay ? <UserInfo /> : false }
+        { this.props.checkoutDisplay ?  <Checkout /> : false }
+        <OrderNavigationFooter 
+          status={this.props}
+          toggleCUSTOMIZE={this.props.toggleCUSTOMIZE}
+          toggleUSERINFO={this.props.toggleUSERINFO}
+          toggleCHECKOUT={this.props.toggleCHECKOUT}
+        />
       </div>
     )
   }
@@ -30,9 +36,9 @@ const mapStateToProps  = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  toggleOFD: () => dispatch(orderFlowDisplay()),
-  toggleLOGIN: () => dispatch(orderFlowDisplay()),
-  toggleREGISTER: () => dispatch(orderFlowDisplay())
+  toggleCUSTOMIZE: () => dispatch(customizeDrinkDisplay()),
+  toggleUSERINFO: () => dispatch(userinfoDisplay()),
+  toggleCHECKOUT: () => dispatch(checkoutDisplay()),
 })
 
 export default connect(
