@@ -38,3 +38,24 @@ export const fetchTeas = () => {
     }
   }
 }
+
+export const fetchToppings = () => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch(`${BASE_URL}/users`, {
+        method: "GET",
+        headers: {'Content-Type':'application/json'},
+      })
+      let toppingsObject = await response.json()
+      dispatch({
+        type: 'FETCH_TOPPINGS',
+        payload: toppingsObject
+      })
+    } catch(err) {
+      dispatch({
+        type: 'FETCH_TOPPINGS_FAIL',
+        payload: err
+      })
+    }
+  }
+}

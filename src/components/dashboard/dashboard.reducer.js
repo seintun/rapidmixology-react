@@ -2,7 +2,8 @@ const initialState = {
   customizeDrinkDisplay: true,
   userinfoDisplay: false,
   checkoutDisplay: false,
-  teas: []
+  teas: [],
+  toppings: []
 };
 
 const dashboardReducer = (state = initialState, action) => {
@@ -32,6 +33,11 @@ const dashboardReducer = (state = initialState, action) => {
     return {
       ...state,
       teas: action.payload
+    }
+    case 'FETCH_TOPPINGS':
+    return {
+      ...state,
+      toppings: action.payload
     }
     default:
       return state

@@ -14,7 +14,7 @@ export default class CustomizeDrink extends Component {
           </Segment>
           <Segment>
             <h4>Topping Selection <em>(Pick one or more)</em>:</h4>
-            <ToppingsList />
+            <ToppingsList toppings={this.props.toppings} fetchToppings={this.props.fetchToppings}/>
           </Segment>
           <Segment>
             <Ingredients />
