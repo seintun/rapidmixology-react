@@ -3,14 +3,14 @@ import { Menu } from 'semantic-ui-react'
 
 export default class OrderNavigationFooter extends Component {
   render() {
-    const { 
-      customizeDrinkDisplay, 
-      userinfoDisplay, 
-      checkoutDisplay, 
-      toggleCUSTOMIZE, 
-      toggleUSERINFO, 
-      toggleCHECKOUT 
-    } = this.props.status
+    // const { 
+    //   customizeDrinkDisplay, 
+    //   userinfoDisplay, 
+    //   checkoutDisplay, 
+    //   toggleCUSTOMIZE, 
+    //   toggleUSERINFO, 
+    //   toggleCHECKOUT 
+    // } = this.props.status
     return (
       <div>
         <Menu fixed='bottom' inverted>

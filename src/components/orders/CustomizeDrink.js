@@ -10,7 +10,7 @@ export default class CustomizeDrink extends Component {
       <div>
         <Segment.Group>
           <Segment>
-            <TeasList />
+            <TeasList teas={this.props.teas} fetchTeas={this.props.fetchTeas} />
           </Segment>
           <Segment>
             <h4>Topping Selection <em>(Pick one or more)</em>:</h4>

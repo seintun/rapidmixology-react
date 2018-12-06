@@ -5,16 +5,16 @@ import Topping from './Toppings'
 export default class ToppingsList extends Component {
   state = {
     toppingOptions : [
-      { id: '1', text: 'Boba', value: 'Boba' },
-      { id: '2', text: 'Pudding', value: 'pudding' },
-      { id: '3', text: 'Nata Jelly', value: 'natajelly' },
-      { id: '4', text: 'Mung Bean', value: 'mungbean' },
-      { id: '5', text: 'Herbal Jelly', value: 'herbaljelly' },
-      { id: '6', text: 'Grape Popping Bubbles', value: 'grapepb' },
-      { id: '7', text: 'Mango Popping Bubbles', value: 'mangopb' },
-      { id: '8', text: 'Coffee Popping Bubbles', value: 'coffeepb' },
-      { id: '9', text: 'Aloe Jelly', value: 'aloejelly' },
-      { id: '10', text: 'Fig Jelly', value: 'figjelly' },
+      { id: '2', text: 'Boba', value: 'boba' },
+      { id: '3', text: 'Pudding', value: 'pudding' },
+      { id: '4', text: 'Nata Jelly', value: 'natajelly' },
+      { id: '5', text: 'Mung Bean', value: 'mungbean' },
+      { id: '6', text: 'Herbal Jelly', value: 'herbaljelly' },
+      { id: '7', text: 'Grape Popping Bubbles', value: 'grapepb' },
+      { id: '8', text: 'Mango Popping Bubbles', value: 'mangopb' },
+      { id: '9', text: 'Coffee Popping Bubbles', value: 'coffeepb' },
+      { id: '10', text: 'Aloe Jelly', value: 'aloejelly' },
+      { id: '11', text: 'Fig Jelly', value: 'figjelly' },
     ],
     toppings: [],
     selectedToppings: []
@@ -49,11 +49,11 @@ export default class ToppingsList extends Component {
           options={this.state.toppingOptions} 
           onChange={this.handleChange}
         />
-      <div>
-        {this.state.toppings.map(topping => {
-          return <Topping key={topping.id} topping={ topping } updateQuantity={this.handleQuantity} />
-        })}
-      </div>
+        <div>
+          {this.state.toppings.map(topping => {
+            return <Topping key={topping.id} topping={ topping } updateQuantity={this.handleQuantity} />
+          })}
+        </div>
       </div> 
     )
   }
