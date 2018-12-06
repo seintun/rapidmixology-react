@@ -21,11 +21,12 @@ export const checkoutDisplay = () => {
 export const fetchTeas = () => {
   return async (dispatch) => {
     try {
-      let response = await fetch(`${BASE_URL}/users`, {
+      let response = await fetch(`${BASE_URL}/teas`, {
         method: "GET",
         headers: {'Content-Type':'application/json'},
       })
       let teasObject = await response.json()
+      // console.log(teasObject, '%%%%INSIDE DASH.ACTIONS TEAS%%%')
       dispatch({
         type: 'FETCH_TEAS',
         payload: teasObject
@@ -42,11 +43,12 @@ export const fetchTeas = () => {
 export const fetchToppings = () => {
   return async (dispatch) => {
     try {
-      let response = await fetch(`${BASE_URL}/users`, {
+      let response = await fetch(`${BASE_URL}/toppings`, {
         method: "GET",
         headers: {'Content-Type':'application/json'},
       })
       let toppingsObject = await response.json()
+      console.log(toppingsObject, '%%%%INSIDE DASH.ACTIONS TOPPINGS%%%')
       dispatch({
         type: 'FETCH_TOPPINGS',
         payload: toppingsObject
