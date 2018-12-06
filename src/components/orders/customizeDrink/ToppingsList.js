@@ -16,17 +16,29 @@ export default class ToppingsList extends Component {
       { id: '9', text: 'Aloe Jelly', value: 'aloejelly' },
       { id: '10', text: 'Fig Jelly', value: 'figjelly' },
     ],
-    toppings: []
+    toppings: [],
+    selectedToppings: []
   }
 
   handleChange = (event, data) => {
-    this.setState({toppings: data.value})
+    this.setState({ selectedToppings: data.value });
+    let toppings = data.value.map(val => {
+      let top =  this.state.toppingOptions.find(top => top.value === val);
+      top.quantity = 0;
+      return top;
+    })
+    this.setState({toppings});
   }
+
   handleCheck = (e) => {
     e.preventDefault();
   }
-  handleQuantity = () => {
 
+  handleQuantity = (toppingId, quantity) => {
+    this.state.toppings.forEach(top => {
+      if (top.id === toppingId) return top.quantity = quantity;
+    })
+    this.setState({ toppings : this.state.toppings}, () => console.log(this.state));
   }
 
   render() {
@@ -39,10 +51,7 @@ export default class ToppingsList extends Component {
         />
       <div>
         {this.state.toppings.map(topping => {
-          let toppingInfo = this.state.toppingOptions.find(toppingFinder => {
-            return toppingFinder.value === topping
-          })
-          return <Topping key={toppingInfo.id} topping={ toppingInfo }/>
+          return <Topping key={topping.id} topping={ topping } updateQuantity={this.handleQuantity} />
         })}
       </div>
       </div> 

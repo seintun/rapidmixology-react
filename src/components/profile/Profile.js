@@ -9,12 +9,12 @@ const extra = (
   </div>
 )
 
-const UserProfile = (props) => {
-  const userInfo = props.user.userLoggedIn
+const UserProfile = ({ user }) => {
+  // console.log(props.user, 'Inside Profile.js with props')
   return (
   <Card
     image='https://jooinn.com/images/portrait-102.jpg'
-    header={userInfo}
+    header= {`${user.firstName} ${user.lastName}`}
     meta='Friend'
     description='Albert Einstein was a German-born theoretical physicist who developed the theory of relativity, one of the two pillars of modern physics. His work is also known for its influence on the philosophy of science.'
     extra={extra}
@@ -22,10 +22,11 @@ const UserProfile = (props) => {
   )
 }
 
-function mapStateToProps(state) {
-  return {
-    user: state.auth.user
-  }
-}
+const mapStateToProps = state => ({
+  user: state.auth.user.userLoggedIn
+})
 
-export default connect(mapStateToProps, null)(UserProfile)
+export default connect(
+  mapStateToProps, 
+  null
+)(UserProfile)
