@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 
-export default class SidebarExampleDimmed extends Component {
+export default class SideNavBar extends Component {
   state = { 
     visible: false,
     signedIn: false

@@ -7,7 +7,7 @@ export default class Checkout extends Component {
   render() {
     return (
       <div>
-      
+        <h3>Ready to checkout?</h3>
       </div>
     )
   }
