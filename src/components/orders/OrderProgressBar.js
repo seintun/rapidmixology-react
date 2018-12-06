@@ -6,19 +6,19 @@ export default class OrderProgressBar extends Component {
     return(
       <div>
         <Step.Group size='mini' widths={3} unstackable>
-          <Step completed as='a' onClick={ this.props.toggleCUSTOMIZE }>
+          <Step completed={ this.props.customizeDrinkDisplay ? true : false } as='a' onClick={ this.props.toggleCUSTOMIZE }>
             <Icon name='coffee' />
             <Step.Content>
               <Step.Title>Customize Drink</Step.Title>
             </Step.Content>
           </Step>
-          <Step active as='a' onClick={ this.props.toggleUSERINFO }>
+          <Step active={ this.props.userinfoDisplay ? true : false } as='a' onClick={ this.props.toggleUSERINFO }>
             <Icon name='key' />
             <Step.Content>
               <Step.Title>User Information</Step.Title>
             </Step.Content>
           </Step>
-          <Step as='a' onClick={ this.props.toggleCHECKOUT }>
+          <Step disabled={ this.props.checkoutDisplay ? true : false } as='a' onClick={ this.props.toggleCHECKOUT }>
             <Icon name='cart' />
             <Step.Content>
               <Step.Title>Confirm Order</Step.Title>

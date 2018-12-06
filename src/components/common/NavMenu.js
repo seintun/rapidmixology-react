@@ -30,15 +30,17 @@ export default class SideNavBar extends Component {
             </Menu.Item>
           </NavLink>
           {this.state.signedIn 
-            ? <Menu.Item className="right" onClick={this.handleSignedIn}>
-                <NavLink to='/'>
+            ? <NavLink to='/'>
+                <Menu.Item className="right" onClick={this.handleSignedIn}>
                   <Icon name="log out"/>logout
-                </NavLink> 
-              </Menu.Item>
-            : <Menu.Item className="right" onClick={this.handleSignedIn}>
-                <Icon name="user secret"></Icon>
-                Admin Auto
-              </Menu.Item>
+                </Menu.Item>
+              </NavLink> 
+            : <NavLink to='/orders'>
+                <Menu.Item className="right" onClick={this.handleSignedIn}>  
+                  <Icon name="user secret"></Icon>
+                  Admin Auto
+                </Menu.Item>
+              </NavLink>
           }
         </Menu>
       <div>
