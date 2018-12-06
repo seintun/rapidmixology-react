@@ -40,7 +40,9 @@ export default class ToppingsList extends Component {
     })
     this.setState({ toppings : this.state.toppings});
   }
-
+  componentDidMount() {
+    this.props.fetchToppings()
+  }
   render() {
     return (
       <div>

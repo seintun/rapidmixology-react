@@ -37,7 +37,7 @@ export default class OrderFlow extends Component {
           Tea Selection <em>(Pick one)</em>: <span> {this.state.tea}</span>
         </h4>
         <Dropdown placeholder='Select the tea type' 
-          fluid selection options={this.props.teas} 
+          fluid selection options={this.state.teaOptions} 
           onChange={this.handleChange}
         />
       </div>
