@@ -23,7 +23,7 @@ export default class ToppingsList extends Component {
   handleChange = (event, data) => {
     this.setState({ selectedToppings: data.value });
     let toppings = data.value.map(val => {
-      let top =  this.state.toppingOptions.find(top => top.value === val);
+      let top =  this.props.toppings.find(top => top.value === val);
       top.quantity = 0;
       return top;
     })
@@ -48,7 +48,7 @@ export default class ToppingsList extends Component {
       <div>
         <Dropdown placeholder='Select any Toppings' 
           fluid multiple selection 
-          options={this.state.toppingOptions} 
+          options={this.props.toppings} 
           onChange={this.handleChange}
         />
         <div>

@@ -21,6 +21,10 @@ class Dashboard extends Component {
           toggleCUSTOMIZE={this.props.toggleCUSTOMIZE}
           toggleUSERINFO={this.props.toggleUSERINFO}
           toggleCHECKOUT={this.props.toggleCHECKOUT}
+
+          customizeDrinkDisplay={this.props.customizeDrinkDisplay}
+          userinfoDisplay={this.props.userinfoDisplay}
+          checkoutDisplay={this.props.checkoutDisplay}
         />
     
         { this.props.customizeDrinkDisplay 

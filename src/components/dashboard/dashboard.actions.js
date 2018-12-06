@@ -26,10 +26,13 @@ export const fetchTeas = () => {
         headers: {'Content-Type':'application/json'},
       })
       let teasObject = await response.json()
-      // console.log(teasObject, '%%%%INSIDE DASH.ACTIONS TEAS%%%')
+      let payload = teasObject.map(tea => {
+        return {id: tea.id, text: tea.name, value: tea.name}
+      })
+      // console.log(payload, '%%%%INSIDE DASH.ACTIONS TEAS%%%%')
       dispatch({
         type: 'FETCH_TEAS',
-        payload: teasObject
+        payload
       })
     } catch(err) {
       dispatch({
@@ -48,10 +51,13 @@ export const fetchToppings = () => {
         headers: {'Content-Type':'application/json'},
       })
       let toppingsObject = await response.json()
-      console.log(toppingsObject, '%%%%INSIDE DASH.ACTIONS TOPPINGS%%%')
+      let payload = toppingsObject.map(topping => {
+        return {id: topping.id, text: topping.name, value: topping.name}
+      })
+      // console.log(payload, '%%%%INSIDE DASH.ACTIONS TOPPINGS%%%')
       dispatch({
         type: 'FETCH_TOPPINGS',
-        payload: toppingsObject
+        payload
       })
     } catch(err) {
       dispatch({
