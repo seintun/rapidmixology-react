@@ -10,7 +10,6 @@ const extra = (
 )
 
 const UserProfile = ({ user }) => {
-  // console.log(props.user, 'Inside Profile.js with props')
   return (
   <Card
     image='https://jooinn.com/images/portrait-102.jpg'

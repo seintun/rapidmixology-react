@@ -38,7 +38,7 @@ export default class ToppingsList extends Component {
     this.state.toppings.forEach(top => {
       if (top.id === toppingId) return top.quantity = quantity;
     })
-    this.setState({ toppings : this.state.toppings}, () => console.log(this.state));
+    this.setState({ toppings : this.state.toppings});
   }
 
   render() {
