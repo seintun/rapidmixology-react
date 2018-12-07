@@ -3,7 +3,7 @@ const initialState = {
   orderProgressCSS: {
     customize: false,
     userInfo: false,
-    checkout: false
+    checkout: true
   }
 };
 
@@ -16,7 +16,7 @@ const dashboardReducer = (state = initialState, action) => {
       orderProgressCSS: {
         customize: false,
         userInfo: false,
-        checkout: false
+        checkout: true
       }
     }
     case 'USERINFO_STEP':

@@ -28,7 +28,7 @@ export default class OrderProgressBar extends Component {
           </Step>
           <Step 
             as='a' 
-            completed={ this.props.orderProgressCSS.checkout ? true : false } 
+            disabled={ this.props.orderProgressCSS.checkout ? true : false }
             onClick={ this.props.checkoutStep }
           >
             <Icon name='cart' />
