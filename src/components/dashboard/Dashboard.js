@@ -27,8 +27,9 @@ class Dashboard extends Component {
   }
 
   handleTeaChoice = (teaInfo) => {
-    this.setState({ orders: {
-      drink: { tea_id: teaInfo.id }
+    this.setState({ 
+      orders: {
+        drink: { tea_id: teaInfo.id }
       }
     })
   }
@@ -51,8 +52,19 @@ class Dashboard extends Component {
       }
     })
   }
+  handleIngredientsChoice = (ingredientsInfo) => {
+    const { milk, sugar, ice } = ingredientsInfo
+    this.setState({ 
+      orders: {
+        drink: {     	
+          milk: milk,
+          sugar: sugar,
+          ice: ice, 
+        }
+      }
+    })
+  }
   render() {
-    console.log(this.state, 'DASHBOARD STATE')
     return (
       <div>
         <OrderProgressBar
@@ -66,7 +78,11 @@ class Dashboard extends Component {
         />
     
         { this.props.customizeDrinkDisplay 
-          ? <CustomizeDrink handleTeaChoice={ this.handleTeaChoice } handleToppingChoice={ this.handleToppingChoice }/> 
+          ? <CustomizeDrink 
+              handleTeaChoice={ this.handleTeaChoice } 
+              handleToppingChoice={ this.handleToppingChoice }
+              handleIngredientsChoice={ this.handleIngredientsChoice }
+            /> 
           : false }
         { this.props.userinfoDisplay ? <UserInfo /> : false }
         { this.props.checkoutDisplay ?  <Checkout /> : false }

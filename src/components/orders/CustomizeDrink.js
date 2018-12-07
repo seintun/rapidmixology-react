@@ -30,7 +30,7 @@ class CustomizeDrink extends Component {
             />
           </Segment>
           <Segment>
-            <Ingredients />
+            <Ingredients handleIngredientsChoice={ this.props.handleIngredientsChoice } />
           </Segment>
         </Segment.Group>
       </div>
