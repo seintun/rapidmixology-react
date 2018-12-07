@@ -16,17 +16,19 @@ export default class ToppingsList extends Component {
       return top;
     })
     this.setState({toppings});
+    this.props.handleToppingChoice(this.state.toppings)
   }
-
+  
   handleCheck = (e) => {
     e.preventDefault();
   }
 
   handleQuantity = (toppingId, quantity) => {
-    this.state.toppings.forEach(top => {
+    this.state.toppings.map(top => {
       if (top.id === toppingId) return top.quantity = quantity;
     })
     this.setState({ toppings : this.state.toppings});
+    this.props.handleToppingChoice(this.state.toppings)
   }
   componentDidMount() {
     this.props.fetchToppings()
@@ -41,7 +43,10 @@ export default class ToppingsList extends Component {
         />
         <div>
           {this.state.toppings.map(topping => {
-            return <Topping key={topping.id} topping={ topping } updateQuantity={this.handleQuantity} />
+            return <Topping 
+              key={topping.id} 
+              topping={ topping } 
+              updateQuantity={this.handleQuantity} />
           })}
         </div>
       </div> 

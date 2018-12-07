@@ -2,10 +2,10 @@ import React from 'react'
 import { Segment, Button } from 'semantic-ui-react'
 
 const Toppings = (props) => {
-  const { topping : { text, id, quantity }, updateQuantity } = props;
+  const { topping : { name, id, quantity }, updateQuantity } = props;
   return (
     <Segment>
-      <h5> {text} serving of {quantity}</h5>
+      <h5> {name} serving of {quantity}</h5>
       <Button.Group>
         <Button className={`${ quantity === 1 ? 'primary': ''}`} onClick={() => updateQuantity(id, 1)}>One</Button>
         <Button.Or />

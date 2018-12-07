@@ -12,26 +12,82 @@ import {
 } from './dashboard.actions'
 
 class Dashboard extends Component {
+  state = {
+    orders: {
+      "userId": null,
+      "drink": {
+        "tea_id": null,
+        "milk": null,
+        "sugar": null,
+        "ice": null,
+        "total": 5.78,
+        "toppings": []
+      }
+    }
+  }
+
+  handleTeaChoice = (teaInfo) => {
+    this.setState({ 
+      orders: {
+        drink: { tea_id: teaInfo.id }
+      }
+    })
+  }
+  handleToppingChoice = (toppingInfo) => {
+    console.log(toppingInfo, 'what I got????')
+    let toppingList = toppingInfo.map(topping => {
+      const { id, value, quantity } = topping
+      const each ={ 
+        id: id,
+        name: value, 
+        quantity: quantity
+      }
+      return each
+    })
+    this.setState({ 
+      orders: {
+        drink: {
+          toppings: toppingList
+        }
+      }
+    })
+  }
+  handleIngredientsChoice = (ingredientsInfo) => {
+    const { milk, sugar, ice } = ingredientsInfo
+    this.setState({ 
+      orders: {
+        drink: {     	
+          milk: milk,
+          sugar: sugar,
+          ice: ice, 
+        }
+      }
+    })
+  }
   render() {
     return (
       <div>
         <OrderProgressBar
-          toggleCUSTOMIZE={this.props.toggleCUSTOMIZE}
-          toggleUSERINFO={this.props.toggleUSERINFO}
-          toggleCHECKOUT={this.props.toggleCHECKOUT}
+          toggleCUSTOMIZE={ this.props.toggleCUSTOMIZE }
+          toggleUSERINFO={ this.props.toggleUSERINFO }
+          toggleCHECKOUT={ this.props.toggleCHECKOUT }
 
-          customizeDrinkDisplay={this.props.customizeDrinkDisplay}
-          userinfoDisplay={this.props.userinfoDisplay}
-          checkoutDisplay={this.props.checkoutDisplay}
+          customizeDrinkDisplay={ this.props.customizeDrinkDisplay }
+          userinfoDisplay={ this.props.userinfoDisplay }
+          checkoutDisplay={ this.props.checkoutDisplay }
         />
     
         { this.props.customizeDrinkDisplay 
-          ? <CustomizeDrink /> 
+          ? <CustomizeDrink 
+              handleTeaChoice={ this.handleTeaChoice } 
+              handleToppingChoice={ this.handleToppingChoice }
+              handleIngredientsChoice={ this.handleIngredientsChoice }
+            /> 
           : false }
         { this.props.userinfoDisplay ? <UserInfo /> : false }
         { this.props.checkoutDisplay ?  <Checkout /> : false }
         <OrderNavigationFooter 
-          status={this.props}
+          status={ this.props }
         />
       </div>
     )
