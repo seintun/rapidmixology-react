@@ -56,8 +56,8 @@ class SideNavBar extends Component {
         >
           {this.state.signedIn 
             ? <SignedInLinks user={ this.props.user }/> 
-            : <SignedOutLinks 
-          />}
+            : <SignedOutLinks />
+          }
         </Sidebar>
       </div>
     )

@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Segment } from 'semantic-ui-react'
 import TeasList from './customizeDrink/TeasList'
 import ToppingsList from './customizeDrink/ToppingsList'
 import Ingredients from './customizeDrink/Ingredients'
+import { 
+  fetchTeas, 
+  fetchToppings 
+} from './customizeDrink/customize.actions'
 
-export default class CustomizeDrink extends Component {
+class CustomizeDrink extends Component {
   render(){
     return(
       <div>
@@ -24,3 +29,16 @@ export default class CustomizeDrink extends Component {
     )
   }
 }
+const mapStateToProps  = state => ({
+  ...state.customize
+})
+
+const mapDispatchToProps = dispatch => ({
+  fetchTeas: () => dispatch(fetchTeas()),
+  fetchToppings: () => dispatch(fetchToppings())
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CustomizeDrink)

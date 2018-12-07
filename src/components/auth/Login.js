@@ -20,9 +20,10 @@ class Login extends Component {
   
   render() {
     const { user } = this.props;
+    const token = localStorage.getItem('token')
     return (
       <div>
-        { user && user.userLoggedIn
+        { user.userLoggedIn && token
           ? <Redirect to='/profile'></Redirect> 
           : <Container>
               <h1>Log In here!</h1>
