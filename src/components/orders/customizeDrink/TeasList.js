@@ -7,7 +7,13 @@ export default class OrderFlow extends Component {
   }
 
   handleChange = (event, data) => {
-    this.setState({tea: data.value})
+    const { value } = data;
+    const { id } = data.options.find(o => o.value === value);
+    const selectedTea = {
+      id: id,
+      name: value
+    }
+    this.setState({tea: selectedTea})
 
   }
   componentDidMount() {
@@ -17,7 +23,7 @@ export default class OrderFlow extends Component {
     return (
       <div>
         <h4>
-          Tea Selection <em>(Pick one)</em>: <span> {this.state.tea}</span>
+          Tea Selection <em>(Pick one)</em>: <span> {this.state.tea.name}</span>
         </h4>
         <Dropdown placeholder='Select the tea type' 
           fluid selection options={this.props.teas} 
