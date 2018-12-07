@@ -5,14 +5,16 @@ import OrderNavigationFooter from '../orders/OrderNavigationFooter'
 import CustomizeDrink from '../orders/CustomizeDrink'
 import Checkout from '../orders/Checkout'
 import UserInfo from '../orders/UserInfo';
-import { 
-  customizeDrinkDisplay, 
-  userinfoDisplay, 
-  checkoutDisplay
+import { Segment } from 'semantic-ui-react'
+import {
+  customizeStep,
+  userInfoStep,
+  checkoutStep
 } from './dashboard.actions'
 
 class Dashboard extends Component {
   state = {
+    currentStatus: this.props.currentStatus,
     orders: {
       "userId": null,
       "drink": {
@@ -25,7 +27,6 @@ class Dashboard extends Component {
       }
     }
   }
-
   handleTeaChoice = (teaInfo) => {
     this.setState({ 
       orders: {
@@ -34,7 +35,6 @@ class Dashboard extends Component {
     })
   }
   handleToppingChoice = (toppingInfo) => {
-    console.log(toppingInfo, 'what I got????')
     let toppingList = toppingInfo.map(topping => {
       const { id, value, quantity } = topping
       const each ={ 
@@ -66,30 +66,32 @@ class Dashboard extends Component {
   }
   render() {
     return (
-      <div>
+      <Segment>
         <OrderProgressBar
-          toggleCUSTOMIZE={ this.props.toggleCUSTOMIZE }
-          toggleUSERINFO={ this.props.toggleUSERINFO }
-          toggleCHECKOUT={ this.props.toggleCHECKOUT }
+          orderProgressCSS={ this.props.orderProgressCSS }
 
-          customizeDrinkDisplay={ this.props.customizeDrinkDisplay }
-          userinfoDisplay={ this.props.userinfoDisplay }
-          checkoutDisplay={ this.props.checkoutDisplay }
+          customizeStep={ this.props.customizeStep }
+          userInfoStep={ this.props.userInfoStep }
+          checkoutStep={ this.props.checkoutStep }
         />
     
-        { this.props.customizeDrinkDisplay 
+        { this.state.currentStatus === 'customize'
           ? <CustomizeDrink 
               handleTeaChoice={ this.handleTeaChoice } 
               handleToppingChoice={ this.handleToppingChoice }
               handleIngredientsChoice={ this.handleIngredientsChoice }
             /> 
           : false }
-        { this.props.userinfoDisplay ? <UserInfo /> : false }
-        { this.props.checkoutDisplay ?  <Checkout /> : false }
+        { this.state.currentStatus === 'userInfo'
+          ? <UserInfo /> 
+          : false }
+        { this.state.currentStatus === 'checkout'
+          ?  <Checkout /> 
+          : false }
         <OrderNavigationFooter 
           status={ this.props }
         />
-      </div>
+      </Segment>
     )
   }
 }
@@ -98,9 +100,9 @@ const mapStateToProps  = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  toggleCUSTOMIZE: () => dispatch(customizeDrinkDisplay()),
-  toggleUSERINFO: () => dispatch(userinfoDisplay()),
-  toggleCHECKOUT: () => dispatch(checkoutDisplay())
+  customizeStep: () => dispatch(customizeStep()),
+  userInfoStep: () => dispatch(userInfoStep()),
+  checkoutStep: () => dispatch(checkoutStep()),
 })
 
 export default connect(

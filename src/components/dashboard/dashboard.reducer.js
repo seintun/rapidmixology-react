@@ -1,43 +1,43 @@
 const initialState = {
-  customizeDrinkDisplay: true,
-  userinfoDisplay: false,
-  checkoutDisplay: false,
-  teas: [],
-  toppings: []
+  currentStatus: 'customize',
+  orderProgressCSS: {
+    customize: false,
+    userInfo: false,
+    checkout: false
+  }
 };
 
 const dashboardReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'CUSTOMIZE_DRINK_DISPLAY':
-      return {
-        ...state,
-        customizeDrinkDisplay: true,
-        userinfoDisplay: false,
-        checkoutDisplay: false
+    case 'CUSTOMIZE_DRINK_STEP':
+    return {
+      ...state,
+      currentStatus: 'customize',
+      orderProgressCSS: {
+        customize: false,
+        userInfo: false,
+        checkout: false
       }
-    case 'USERINFO_DISPLAY':
-    return {
-      ...state,
-      customizeDrinkDisplay: false,
-      userinfoDisplay: true,
-      checkoutDisplay: false
     }
-    case 'CHECKOUT_DISPLAY':
+    case 'USERINFO_STEP':
     return {
       ...state,
-      customizeDrinkDisplay: false,
-      userinfoDisplay: false,
-      checkoutDisplay: true
+      currentStatus: 'userInfo',
+      orderProgressCSS: {
+        customize: true,
+        userInfo: false,
+        checkout: false
+      }
     }
-    case 'FETCH_TEAS':
+    case 'CHECKOUT_STEP':
     return {
       ...state,
-      teas: action.payload
-    }
-    case 'FETCH_TOPPINGS':
-    return {
-      ...state,
-      toppings: action.payload
+      currentStatus: 'checkout',
+      orderProgressCSS: {
+        customize: true,
+        userInfo: true,
+        checkout: false
+      }
     }
     default:
       return state
