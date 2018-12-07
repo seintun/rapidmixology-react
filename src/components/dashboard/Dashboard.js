@@ -29,7 +29,9 @@ class Dashboard extends Component {
   handleTeaChoice = (teaInfo) => {
     this.setState({ 
       orders: {
-        drink: { tea_id: teaInfo.id }
+        drink: { 
+          ...this.state.orders.drink,
+          tea_id: teaInfo.id }
       }
     })
   }
@@ -46,6 +48,7 @@ class Dashboard extends Component {
     this.setState({ 
       orders: {
         drink: {
+          ...this.state.orders.drink,
           toppings: toppingList
         }
       }
@@ -55,7 +58,8 @@ class Dashboard extends Component {
     const { milk, sugar, ice } = ingredientsInfo
     this.setState({ 
       orders: {
-        drink: {     	
+        drink: {
+          ...this.state.orders.drink,
           milk: milk,
           sugar: sugar,
           ice: ice, 
@@ -64,6 +68,7 @@ class Dashboard extends Component {
     })
   }
   render() {
+    console.log(this.state, 'whasup in Dashboard')
     return (
       <Segment>
         <OrderProgressBar
