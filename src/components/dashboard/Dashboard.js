@@ -14,7 +14,6 @@ import {
 
 class Dashboard extends Component {
   state = {
-    currentStatus: this.props.currentStatus,
     orders: {
       "userId": null,
       "drink": {
@@ -75,17 +74,17 @@ class Dashboard extends Component {
           checkoutStep={ this.props.checkoutStep }
         />
     
-        { this.state.currentStatus === 'customize'
+        { this.props.currentStatus === 'customize'
           ? <CustomizeDrink 
               handleTeaChoice={ this.handleTeaChoice } 
               handleToppingChoice={ this.handleToppingChoice }
               handleIngredientsChoice={ this.handleIngredientsChoice }
             /> 
           : false }
-        { this.state.currentStatus === 'userInfo'
+        { this.props.currentStatus === 'userInfo'
           ? <UserInfo /> 
           : false }
-        { this.state.currentStatus === 'checkout'
+        { this.props.currentStatus === 'checkout'
           ?  <Checkout /> 
           : false }
         <OrderNavigationFooter 
