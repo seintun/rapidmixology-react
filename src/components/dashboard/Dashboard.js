@@ -68,7 +68,6 @@ class Dashboard extends Component {
     })
   }
   render() {
-    console.log(this.state, 'whasup in Dashboard')
     return (
       <Segment>
         <OrderProgressBar
@@ -93,7 +92,11 @@ class Dashboard extends Component {
           ?  <Checkout /> 
           : false }
         <OrderNavigationFooter 
-          status={ this.props }
+          currentStatus={ this.props.currentStatus }
+
+          customizeStep={ this.props.customizeStep }
+          userInfoStep={ this.props.userInfoStep }
+          checkoutStep={ this.props.checkoutStep }
         />
       </Segment>
     )
