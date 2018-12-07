@@ -65,7 +65,6 @@ class Dashboard extends Component {
     })
   }
   render() {
-    console.log(this.props.currentStatus, '####')
     return (
       <Segment>
         <OrderProgressBar
@@ -101,9 +100,9 @@ const mapStateToProps  = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  customizeStep,
-  userInfoStep,
-  checkoutStep  
+  customizeStep: () => dispatch(customizeStep()),
+  userInfoStep: () => dispatch(userInfoStep()),
+  checkoutStep: () => dispatch(checkoutStep()),
 })
 
 export default connect(

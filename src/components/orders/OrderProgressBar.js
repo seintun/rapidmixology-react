@@ -2,24 +2,6 @@ import React, { Component } from 'react'
 import { Icon, Step } from 'semantic-ui-react'
 
 export default class OrderProgressBar extends Component {
-  state = {
-    
-  }
-  // currentDisplay = () => {
-  //   switch (this.state.currentStatus) {
-  //     case 'customize':
-  //       this.props.customizeStep();
-  //       break;
-  //     case 'userInfo':
-  //     this.props.userInfoStep();
-  //     break;
-  //     case 'checkout':
-  //       this.props.checkoutStep();
-  //       break;
-  //     default:
-  //       return `default`;
-  //   }
-  // }
   render(){
     return(
       <div>

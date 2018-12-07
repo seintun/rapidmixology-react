@@ -13,31 +13,31 @@ const dashboardReducer = (state = initialState, action) => {
     return {
       ...state,
       currentStatus: 'customize',
-      // orderProgressCSS: {
-      //   customize: false,
-      //   userInfo: false,
-      //   checkout: false
-      // }
+      orderProgressCSS: {
+        customize: false,
+        userInfo: false,
+        checkout: false
+      }
     }
     case 'USERINFO_STEP':
     return {
       ...state,
       currentStatus: 'userInfo',
-      // orderProgressCSS: {
-      //   customize: true,
-      //   userInfo: false,
-      //   checkout: false
-      // }
+      orderProgressCSS: {
+        customize: true,
+        userInfo: false,
+        checkout: false
+      }
     }
     case 'CHECKOUT_STEP':
     return {
       ...state,
       currentStatus: 'checkout',
-      // orderProgressCSS: {
-      //   customize: true,
-      //   userInfo: true,
-      //   checkout: false
-      // }
+      orderProgressCSS: {
+        customize: true,
+        userInfo: true,
+        checkout: false
+      }
     }
     default:
       return state
