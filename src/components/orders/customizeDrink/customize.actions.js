@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3500'
+const BASE_URL = 'https://rapidmixology-api.herokuapp.com'
 
 export const fetchTeas = () => {
   return async (dispatch) => {
