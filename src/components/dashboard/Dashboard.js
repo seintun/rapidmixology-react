@@ -8,9 +8,7 @@ import UserInfo from '../orders/UserInfo';
 import { 
   customizeDrinkDisplay, 
   userinfoDisplay, 
-  checkoutDisplay, 
-  fetchTeas, 
-  fetchToppings 
+  checkoutDisplay
 } from './dashboard.actions'
 
 class Dashboard extends Component {
@@ -28,10 +26,7 @@ class Dashboard extends Component {
         />
     
         { this.props.customizeDrinkDisplay 
-          ? <CustomizeDrink 
-            teas={this.props.teas} fetchTeas={this.props.fetchTeas}
-            toppings={this.props.toppings} fetchToppings={this.props.fetchToppings}
-            /> 
+          ? <CustomizeDrink /> 
           : false }
         { this.props.userinfoDisplay ? <UserInfo /> : false }
         { this.props.checkoutDisplay ?  <Checkout /> : false }
@@ -49,9 +44,7 @@ const mapStateToProps  = state => ({
 const mapDispatchToProps = dispatch => ({
   toggleCUSTOMIZE: () => dispatch(customizeDrinkDisplay()),
   toggleUSERINFO: () => dispatch(userinfoDisplay()),
-  toggleCHECKOUT: () => dispatch(checkoutDisplay()),
-  fetchTeas: () => dispatch(fetchTeas()),
-  fetchToppings: () => dispatch(fetchToppings())
+  toggleCHECKOUT: () => dispatch(checkoutDisplay())
 })
 
 export default connect(
