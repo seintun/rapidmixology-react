@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Container, Form, Button, Message, FormGroup } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom'
-import { userLogin } from './auth.actions'
 import { connect } from 'react-redux'
+import { userLogin } from './auth.actions'
 import { bindActionCreators } from 'redux'
 
 class Login extends Component {

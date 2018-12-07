@@ -7,7 +7,7 @@ export default class SignedInLinks extends Component {
     return (
       <div>
         <Menu.Item>
-          Welcome! Sein
+          Welcome! { !this.props.user ? '' : this.props.user.firstName }
         </Menu.Item>
         <NavLink to='/'>
           <Menu.Item>

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Icon, Menu, Sidebar } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 
-export default class SideNavBar extends Component {
+class SideNavBar extends Component {
   state = { 
     visible: false,
     signedIn: false
@@ -20,7 +21,7 @@ export default class SideNavBar extends Component {
     return (
       <div>
         <Menu inverted>
-          <Menu.Item onClick={this.handleShowClick}>
+          <Menu.Item onClick={ this.handleShowClick }>
             <Icon name="bars" />
             Menu
           </Menu.Item>
@@ -30,36 +31,42 @@ export default class SideNavBar extends Component {
             </Menu.Item>
           </NavLink>
           {this.state.signedIn 
-            ? <NavLink to='/'>
-                <Menu.Item className="right" onClick={this.handleSignedIn}>
+            ? <Menu.Item className="right" onClick={ this.handleSignedIn }>  
+                <NavLink to='/'>
                   <Icon name="log out"/>logout
-                </Menu.Item>
-              </NavLink> 
-            : <NavLink to='/orders'>
-                <Menu.Item className="right" onClick={this.handleSignedIn}>  
-                  <Icon name="user secret"></Icon>
-                  Admin Auto
-                </Menu.Item>
-              </NavLink>
+                  </NavLink>
+              </Menu.Item>
+            : <Menu.Item className="right" onClick={ this.handleSignedIn }>  
+                <NavLink to='/orders'>
+                  <Icon name="beer"></Icon>
+                  Customize
+                </NavLink>
+              </Menu.Item>
           }
         </Menu>
-      <div>
         <Sidebar
-          as={Menu}
+          as={ Menu }
           animation='overlay'
           icon='labeled'
           inverted
-          onHide={this.handleSidebarHide}
+          onHide={ this.handleSidebarHide }
           vertical
-          visible={visible}
+          visible={ visible }
           width='thin'
         >
-
-        {this.state.signedIn ? <SignedInLinks /> : <SignedOutLinks />}
-
+          {this.state.signedIn 
+            ? <SignedInLinks user={ this.props.user }/> 
+            : <SignedOutLinks 
+          />}
         </Sidebar>
-        </div>
       </div>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  user: state.auth.user.userLoggedIn
+})
+export default connect(
+  mapStateToProps
+)(SideNavBar)
