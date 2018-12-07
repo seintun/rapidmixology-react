@@ -3,16 +3,16 @@ import { Label, Button, Icon, Segment } from 'semantic-ui-react'
 
 export default class Ingredients extends Component {
   state= {
-    milk: false,
+    milk: true,
     sugar: 1.00,
     ice: 1.00,
-    milkStatus: 'Lactose-free milk included'
+    milkStatus: 'Lactose-free milk added'
   }
   // Toggle status of milk
   handleMilkClick = async () => {
-    await this.state.milk === false 
-    ? this.setState({ milk: true, milkStatus: 'No Milk' })
-    : this.setState({ milk: false, milkStatus: 'Lactose-free milk added' })
+    await this.state.milk === true 
+    ? this.setState({ milk: false, milkStatus: 'No Milk' })
+    : this.setState({ milk: true, milkStatus: 'Lactose-free milk added' })
     this.props.handleIngredientsChoice(this.state)
   }
   // Plus or Minus sugar by increments of 0.25
@@ -47,11 +47,11 @@ export default class Ingredients extends Component {
       <div>
         <Segment>
           <Button.Group>
-            <Button onClick={ this.handleMilkClick }>
+            <Button disabled={!this.state.milk} primary={this.state.milk} onClick={ this.handleMilkClick }>
               Remove
             </Button>
             <Button.Or />
-            <Button positive onClick={ this.handleMilkClick }>
+            <Button disabled={this.state.milk} primary={!this.state.milk} onClick={ this.handleMilkClick }>
               Add
             </Button>
             <Label>
