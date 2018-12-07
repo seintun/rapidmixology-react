@@ -17,13 +17,13 @@ export default class ToppingsList extends Component {
     })
     this.setState({toppings});
   }
-
+  
   handleCheck = (e) => {
     e.preventDefault();
   }
 
   handleQuantity = (toppingId, quantity) => {
-    this.state.toppings.forEach(top => {
+    this.state.toppings.map(top => {
       if (top.id === toppingId) return top.quantity = quantity;
     })
     this.setState({ toppings : this.state.toppings});
