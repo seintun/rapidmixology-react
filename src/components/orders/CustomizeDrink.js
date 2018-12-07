@@ -15,11 +15,19 @@ class CustomizeDrink extends Component {
       <div>
         <Segment.Group>
           <Segment>
-            <TeasList teas={this.props.teas} fetchTeas={this.props.fetchTeas} />
+            <TeasList 
+              teas={this.props.teas} 
+              fetchTeas={this.props.fetchTeas} 
+              handleTeaChoice={ this.props.handleTeaChoice }
+            />
           </Segment>
           <Segment>
             <h4>Topping Selection <em>(Pick one or more)</em>:</h4>
-            <ToppingsList toppings={this.props.toppings} fetchToppings={this.props.fetchToppings}/>
+            <ToppingsList 
+              toppings={this.props.toppings} 
+              fetchToppings={this.props.fetchToppings}
+              handleToppingChoice={ this.props.handleToppingChoice }
+            />
           </Segment>
           <Segment>
             <Ingredients />
