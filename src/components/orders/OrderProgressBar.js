@@ -19,7 +19,11 @@ export default class OrderProgressBar extends Component {
           <Step 
             as='a' 
             completed={ this.props.orderProgressCSS.userInfo ? true : false } 
-            onClick={ this.props.userInfoStep }
+            onClick={ () => {
+              this.props.handleSaveCustomizeDrink();
+              this.props.userInfoStep();
+              }
+            }
           >
             <Icon name='key' />
             <Step.Content>
