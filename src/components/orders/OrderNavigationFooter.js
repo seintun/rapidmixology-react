@@ -5,6 +5,7 @@ export default class OrderNavigationFooter extends Component {
   handleForward = () => {
     switch (this.props.currentStatus) {
       case 'customize':
+        this.props.handleSaveCustomizeDrink()
         this.props.userInfoStep()
         break;
       case 'userInfo':

@@ -4,6 +4,17 @@ const initialState = {
     customize: false,
     userInfo: false,
     checkout: true
+  },
+  orders: {
+    "userId": null,
+    "drink": {
+      "tea_id": null,
+      "milk": null,
+      "sugar": null,
+      "ice": null,
+      "total": 0,
+      "toppings": []
+    }
   }
 };
 
@@ -38,6 +49,11 @@ const dashboardReducer = (state = initialState, action) => {
         userInfo: true,
         checkout: false
       }
+    }
+    case 'SAVE_CUSTOMIZE_DRINK':
+    return {
+      ...state,
+      orders: action.payload
     }
     default:
       return state

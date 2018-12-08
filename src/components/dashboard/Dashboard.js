@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import OrderProgressBar from '../orders/OrderProgressBar'
 import OrderNavigationFooter from '../orders/OrderNavigationFooter'
 import CustomizeDrink from '../orders/CustomizeDrink'
@@ -9,7 +10,8 @@ import { Segment } from 'semantic-ui-react'
 import {
   customizeStep,
   userInfoStep,
-  checkoutStep
+  checkoutStep,
+  saveCustomizeDrink
 } from './dashboard.actions'
 
 class Dashboard extends Component {
@@ -18,9 +20,9 @@ class Dashboard extends Component {
       "userId": null,
       "drink": {
         "tea_id": null,
-        "milk": null,
-        "sugar": null,
-        "ice": null,
+        "milk": true,
+        "sugar": 1,
+        "ice": 1,
         "total": 5.78,
         "toppings": []
       }
@@ -67,6 +69,10 @@ class Dashboard extends Component {
       }
     })
   }
+  handleSaveCustomizeDrink = () => {
+    const orderInfo = this.state
+    this.props.saveCustomizeDrink(orderInfo)
+  }
   render() {
     return (
       <Segment>
@@ -76,6 +82,7 @@ class Dashboard extends Component {
           customizeStep={ this.props.customizeStep }
           userInfoStep={ this.props.userInfoStep }
           checkoutStep={ this.props.checkoutStep }
+          handleSaveCustomizeDrink={ this.handleSaveCustomizeDrink }
         />
     
         { this.props.currentStatus === 'customize'
@@ -97,6 +104,7 @@ class Dashboard extends Component {
           customizeStep={ this.props.customizeStep }
           userInfoStep={ this.props.userInfoStep }
           checkoutStep={ this.props.checkoutStep }
+          handleSaveCustomizeDrink={ this.handleSaveCustomizeDrink }
         />
       </Segment>
     )
@@ -110,6 +118,7 @@ const mapDispatchToProps = dispatch => ({
   customizeStep: () => dispatch(customizeStep()),
   userInfoStep: () => dispatch(userInfoStep()),
   checkoutStep: () => dispatch(checkoutStep()),
+  saveCustomizeDrink: bindActionCreators(saveCustomizeDrink, dispatch)
 })
 
 export default connect(

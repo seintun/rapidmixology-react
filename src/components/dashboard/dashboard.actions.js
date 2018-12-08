@@ -13,3 +13,12 @@ export const checkoutStep = () => {
     type: 'CHECKOUT_STEP'
   }
 }
+export const saveCustomizeDrink = (orderInfo) => {
+  // console.log(orderInfo, 'ACTIONS')
+  return (dispatch) => {
+    dispatch({
+      type: 'SAVE_CUSTOMIZE_DRINK',
+      payload: orderInfo
+    })
+  }
+}
