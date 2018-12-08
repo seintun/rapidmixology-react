@@ -3,12 +3,14 @@ import { Menu } from 'semantic-ui-react'
 
 export default class OrderNavigationFooter extends Component {
   handleForward = () => {
+    const token = localStorage.getItem('token')
     switch (this.props.currentStatus) {
       case 'customize':
-        this.props.handleSaveCustomizeDrink()
-        this.props.userInfoStep()
+        this.props.handleSaveCustomizeDrink();
+        token ? this.props.checkoutStep() : this.props.userInfoStep();
         break;
       case 'userInfo':
+        this.props.handleLoginOnSubmit()
         this.props.checkoutStep()
         break;
       default:
@@ -16,12 +18,13 @@ export default class OrderNavigationFooter extends Component {
     }
   }
   handleBack = () => {
+    const token = localStorage.getItem('token')
     switch (this.props.currentStatus) {
       case 'userInfo':
         this.props.customizeStep()
         break;
       case 'checkout':
-        this.props.userInfoStep()
+        token ? this.props.customizeStep() : this.props.userInfoStep();
         break;
       default:
         return `default`

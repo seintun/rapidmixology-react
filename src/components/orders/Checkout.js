@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-
+import LoggedInCheckoutAlert from '../common/alerts/LoggedInCheckout.alert'
+import LoggedOutCheckoutAlert from '../common/alerts/LoggedOutCheckout.alert'
 export default class Checkout extends Component {
-  state= {
-
-  }
+  state= {}
   render() {
+    const token = () => localStorage.getItem('token')
     return (
       <div>
-        <h3>Ready to checkout?</h3>
+        { token ? <LoggedInCheckoutAlert /> : <LoggedOutCheckoutAlert /> }
       </div>
     )
   }

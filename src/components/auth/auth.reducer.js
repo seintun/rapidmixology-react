@@ -9,7 +9,7 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case USER_LOGIN_SUCCESS:
-      return {...state, user: action.payload}
+      return {...state, userLogs: action.payload}
     default:
       return state;
   }

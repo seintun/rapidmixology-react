@@ -13,9 +13,11 @@ import {
   checkoutStep,
   saveCustomizeDrink
 } from './dashboard.actions'
+import { userLogin } from '../auth/auth.actions'
 
 class Dashboard extends Component {
   state = {
+    userLogin: [],
     orders: {
       "userId": null,
       "drink": {
@@ -70,8 +72,17 @@ class Dashboard extends Component {
     })
   }
   handleSaveCustomizeDrink = () => {
-    const orderInfo = this.state
-    this.props.saveCustomizeDrink(orderInfo)
+    const { orders } = this.state
+    this.props.saveCustomizeDrink(orders)
+  }
+  handleUserInfo = (userInfo) => {
+    this.setState({ 
+      ...this.state,
+      userLogin: userInfo 
+    })
+  }
+  handleLoginOnSubmit = () => {
+    this.props.userLogin(this.state.userLogin)
   }
   render() {
     return (
@@ -83,6 +94,7 @@ class Dashboard extends Component {
           userInfoStep={ this.props.userInfoStep }
           checkoutStep={ this.props.checkoutStep }
           handleSaveCustomizeDrink={ this.handleSaveCustomizeDrink }
+          handleLoginOnSubmit={ this.handleLoginOnSubmit }
         />
     
         { this.props.currentStatus === 'customize'
@@ -93,7 +105,7 @@ class Dashboard extends Component {
             /> 
           : false }
         { this.props.currentStatus === 'userInfo'
-          ? <UserInfo /> 
+          ? <UserInfo handleUserInfo={ this.handleUserInfo } /> 
           : false }
         { this.props.currentStatus === 'checkout'
           ?  <Checkout /> 
@@ -105,6 +117,7 @@ class Dashboard extends Component {
           userInfoStep={ this.props.userInfoStep }
           checkoutStep={ this.props.checkoutStep }
           handleSaveCustomizeDrink={ this.handleSaveCustomizeDrink }
+          handleLoginOnSubmit={ this.handleLoginOnSubmit }
         />
       </Segment>
     )
@@ -118,7 +131,8 @@ const mapDispatchToProps = dispatch => ({
   customizeStep: () => dispatch(customizeStep()),
   userInfoStep: () => dispatch(userInfoStep()),
   checkoutStep: () => dispatch(checkoutStep()),
-  saveCustomizeDrink: bindActionCreators(saveCustomizeDrink, dispatch)
+  saveCustomizeDrink: bindActionCreators(saveCustomizeDrink, dispatch),
+  userLogin: bindActionCreators(userLogin, dispatch)
 })
 
 export default connect(

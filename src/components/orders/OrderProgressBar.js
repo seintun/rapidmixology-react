@@ -3,6 +3,7 @@ import { Icon, Step } from 'semantic-ui-react'
 
 export default class OrderProgressBar extends Component {
   render(){
+    const token = localStorage.getItem('token')
     return(
       <div>
         <Step.Group size='mini' widths={3} unstackable>
@@ -21,7 +22,7 @@ export default class OrderProgressBar extends Component {
             completed={ this.props.orderProgressCSS.userInfo ? true : false } 
             onClick={ () => {
               this.props.handleSaveCustomizeDrink();
-              this.props.userInfoStep();
+              token ? this.props.checkoutStep() : this.props.userInfoStep();
               }
             }
           >
@@ -33,7 +34,12 @@ export default class OrderProgressBar extends Component {
           <Step 
             as='a' 
             disabled={ this.props.orderProgressCSS.checkout ? true : false }
-            onClick={ this.props.checkoutStep }
+            onClick={ 
+              async () => {
+                await this.props.handleLoginOnSubmit();
+                this.props.checkoutStep();
+              } 
+            }
           >
             <Icon name='cart' />
             <Step.Content>

@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
-import { Container, Form, Button, Message, FormGroup } from 'semantic-ui-react'
-import { Redirect } from 'react-router-dom'
+import { Container, Form, Button, FormGroup } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { userLogin } from './auth.actions'
 import { bindActionCreators } from 'redux'
-
+import LoggedOutCheckoutAlert from '../common/alerts/LoggedOutCheckout.alert'
 class Login extends Component {
   state= {
     userName: '',
     password: '',
   }
-  handleOnChange = e => {
-    this.setState({ [e.target.id]: e.target.value })
+  handleOnChange = async (e) => {
+    const userInfo = { 
+      [e.target.id]: e.target.value 
+    }
+    await this.setState(userInfo)
+    this.props.handleUserInfo(this.state)
   }
   handleOnSubmit = (e) => {
     e.preventDefault()
@@ -19,27 +22,23 @@ class Login extends Component {
   }
   
   render() {
-    const { user } = this.props;
-    const token = localStorage.getItem('token')
+    const token = () => localStorage.getItem('token')
     return (
       <div>
-        { user.userLoggedIn && token
-          ? <Redirect to='/profile'></Redirect> 
-          : <Container>
-              <h1>Log In here!</h1>
-              <Form success warning error>
-                <Message success header='Successfully logged in'/>
-                <Message warning header='Missing data entry!' content='One or more fields is missing data, please filled them completely.'/>
-                <Message error header='Action Forbidden!' content='Incorrect email or password!'/>
-      
-                <FormGroup>
-                  <Form.Input id='userName' label='Username' placeholder='username' type='text' width={8} onChange={this.handleOnChange}/>
-                  <Form.Input id='password' label='Password' type='password' placeholder='Confirm Password' width={8} onChange={this.handleOnChange}/>
-                </FormGroup>
-                <Form.Field control={ Button } onClick={ this.handleOnSubmit }>Submit</Form.Field>
-              </Form>
-            </Container>
-        }
+        <Container>
+        { token ? true : <LoggedOutCheckoutAlert /> }
+          <h1>Log In here!</h1>
+          <Form>
+            <FormGroup>
+              <Form.Input id='userName' label='Username' placeholder='username' type='text' width={8} 
+              onChange={this.handleOnChange}/>
+              <Form.Input id='password' label='Password' type='password' placeholder='Confirm Password' width={8}
+              onChange={this.handleOnChange}/>
+            </FormGroup>
+            { token ? true : <Form.Field control={ Button } onClick={ this.handleOnSubmit }>Submit</Form.Field> }
+            
+          </Form>
+        </Container>
       </div>
     )
   }
