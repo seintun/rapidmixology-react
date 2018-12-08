@@ -1,7 +1,7 @@
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAIL = 'USER_LOGIN_FAIL'
 
-const BASE_URL = 'http://localhost:3500'
+const BASE_URL = 'https://rapidmixology-api.herokuapp.com'
 
 export const userLogin = ({userName, password}) => {
   return async (dispatch) => {

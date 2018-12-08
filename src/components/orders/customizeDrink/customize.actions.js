@@ -11,7 +11,6 @@ export const fetchTeas = () => {
       let payload = teasObject.map(tea => {
         return {id: tea.id, text: tea.name, value: tea.name}
       })
-      // console.log(payload, '%%%%INSIDE DASH.ACTIONS TEAS%%%%')
       dispatch({
         type: 'FETCH_TEAS',
         payload
@@ -36,7 +35,6 @@ export const fetchToppings = () => {
       let payload = toppingsObject.map(topping => {
         return {id: topping.id, text: topping.name, value: topping.name}
       })
-      // console.log(payload, '%%%%INSIDE DASH.ACTIONS TOPPINGS%%%')
       dispatch({
         type: 'FETCH_TOPPINGS',
         payload
