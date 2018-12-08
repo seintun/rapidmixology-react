@@ -17,7 +17,7 @@ class SideNavBar extends Component {
 
   render() {
     const { visible } = this.state
-
+    const token = localStorage.getItem('token')
     return (
       <div>
         <Menu inverted>
@@ -30,7 +30,7 @@ class SideNavBar extends Component {
               <h3>Rapid Mixology</h3>
             </Menu.Item>
           </NavLink>
-          {this.state.signedIn 
+          { token
             ? <Menu.Item className="right" onClick={ this.handleSignedIn }>  
                 <NavLink to='/'>
                   <Icon name="log out"/>logout
@@ -54,10 +54,7 @@ class SideNavBar extends Component {
           visible={ visible }
           width='thin'
         >
-          {this.state.signedIn 
-            ? <SignedInLinks user={ this.props.user }/> 
-            : <SignedOutLinks />
-          }
+          { token ? <SignedInLinks user={ this.props.user }/> : <SignedOutLinks /> }
         </Sidebar>
       </div>
     )

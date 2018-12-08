@@ -14,7 +14,6 @@ export const checkoutStep = () => {
   }
 }
 export const saveCustomizeDrink = (orderInfo) => {
-  // console.log(orderInfo, 'ACTIONS')
   return (dispatch) => {
     dispatch({
       type: 'SAVE_CUSTOMIZE_DRINK',
