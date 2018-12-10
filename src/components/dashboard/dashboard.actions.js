@@ -1,3 +1,5 @@
+const BASE_URL = 'http://localhost:3500'
+
 export const customizeStep = () => {
   return {
     type: 'CUSTOMIZE_DRINK_STEP'
@@ -13,11 +15,33 @@ export const checkoutStep = () => {
     type: 'CHECKOUT_STEP'
   }
 }
-export const saveCustomizeDrink = (orderInfo) => {
+export const saveCustomizeDrink = (drinkInfo) => {
   return (dispatch) => {
     dispatch({
       type: 'SAVE_CUSTOMIZE_DRINK',
-      payload: orderInfo
+      payload: drinkInfo
     })
   }
 }
+
+export const checkoutOrder = (orderInfo) => {
+  return async (dispatch) => {
+    try {
+      let response = await fetch(`${BASE_URL}/orders`, {
+        method: "POST",
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(orderInfo)
+      })
+      let orderConfirmation = await response.json()
+      dispatch({
+        type: 'ORDER_SUCCESS',
+        payload: orderConfirmation
+      })
+    } catch(err) {
+      dispatch({
+        type: 'ORDER_FAIL',
+        payload: err
+      })
+    }
+  }
+};

@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { Image, Item, List } from 'semantic-ui-react'
 
 export default class CheckoutItems extends Component {
-  state= {}
+  state= {
+  }
   render() {
-    console.log(this.props.orders, '$$$')
-    const drink = this.props.orders.drink
+    const { tea_id, milk, sugar, ice } = this.props.drink
     return (
       <div>
         <Item.Group>
@@ -14,7 +14,7 @@ export default class CheckoutItems extends Component {
 
             <Item.Content>
               <Item.Header as='a'>Header</Item.Header>
-              <Item.Meta>Featuring {drink.tea_id} </Item.Meta>
+              <Item.Meta>Featuring { tea_id } </Item.Meta>
               <Item.Description>
                 <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
               </Item.Description>
@@ -23,19 +23,19 @@ export default class CheckoutItems extends Component {
                   <List.Item>
                     <List.Icon name='lemon outline' />
                     <List.Content>
-                      { drink.milk ? 'With milk' : 'Without milk'}
+                      { milk ? 'With milk' : 'Without milk'}
                     </List.Content>
                   </List.Item>
                   <List.Item>
                     <List.Icon name='lemon outline' />
                     <List.Content>
-                      Ice: { drink.ice * 100}%
+                      Ice: { ice * 100 }%
                     </List.Content>
                   </List.Item>
                   <List.Item>
                     <List.Icon name='lemon outline' />
                     <List.Content>
-                      Sugar: { drink.sugar * 100}%
+                      Sugar: { sugar * 100 }%
                     </List.Content>
                   </List.Item>
                 </List>
