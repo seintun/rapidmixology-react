@@ -86,30 +86,32 @@ class Dashboard extends Component {
   }
   render() {
     return (
-      <Segment>
-        <OrderProgressBar
-          orderProgressCSS={ this.props.orderProgressCSS }
+      <div>
+        <Segment>
+          <OrderProgressBar
+            orderProgressCSS={ this.props.orderProgressCSS }
 
-          customizeStep={ this.props.customizeStep }
-          userInfoStep={ this.props.userInfoStep }
-          checkoutStep={ this.props.checkoutStep }
-          handleSaveCustomizeDrink={ this.handleSaveCustomizeDrink }
-          handleLoginOnSubmit={ this.handleLoginOnSubmit }
-        />
-    
-        { this.props.currentStatus === 'customize'
-          ? <CustomizeDrink 
-              handleTeaChoice={ this.handleTeaChoice } 
-              handleToppingChoice={ this.handleToppingChoice }
-              handleIngredientsChoice={ this.handleIngredientsChoice }
-            /> 
-          : false }
-        { this.props.currentStatus === 'userInfo'
-          ? <UserInfo handleUserInfo={ this.handleUserInfo } /> 
-          : false }
-        { this.props.currentStatus === 'checkout'
-          ?  <Checkout /> 
-          : false }
+            customizeStep={ this.props.customizeStep }
+            userInfoStep={ this.props.userInfoStep }
+            checkoutStep={ this.props.checkoutStep }
+            handleSaveCustomizeDrink={ this.handleSaveCustomizeDrink }
+            handleLoginOnSubmit={ this.handleLoginOnSubmit }
+          />
+      
+          { this.props.currentStatus === 'customize'
+            ? <CustomizeDrink 
+                handleTeaChoice={ this.handleTeaChoice } 
+                handleToppingChoice={ this.handleToppingChoice }
+                handleIngredientsChoice={ this.handleIngredientsChoice }
+              /> 
+            : false }
+          { this.props.currentStatus === 'userInfo'
+            ? <UserInfo handleUserInfo={ this.handleUserInfo } /> 
+            : false }
+          { this.props.currentStatus === 'checkout'
+            ?  <Checkout orders={ this.props.orders }/> 
+            : false }
+        </Segment>
         <OrderNavigationFooter 
           currentStatus={ this.props.currentStatus }
 
@@ -119,7 +121,7 @@ class Dashboard extends Component {
           handleSaveCustomizeDrink={ this.handleSaveCustomizeDrink }
           handleLoginOnSubmit={ this.handleLoginOnSubmit }
         />
-      </Segment>
+      </div>
     )
   }
 }

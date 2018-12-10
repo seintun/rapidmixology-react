@@ -14,7 +14,9 @@ class Login extends Component {
       [e.target.id]: e.target.value 
     }
     await this.setState(userInfo)
-    this.props.handleUserInfo(this.state)
+    if(this.props.currentStatus === 'userInfo'){
+      this.props.handleUserInfo(this.state)
+    }
   }
   handleOnSubmit = (e) => {
     e.preventDefault()
@@ -22,7 +24,7 @@ class Login extends Component {
   }
   
   render() {
-    const token = () => localStorage.getItem('token')
+    const token = localStorage.getItem('token')
     return (
       <div>
         <Container>
@@ -35,8 +37,10 @@ class Login extends Component {
               <Form.Input id='password' label='Password' type='password' placeholder='Confirm Password' width={8}
               onChange={this.handleOnChange}/>
             </FormGroup>
-            { token ? true : <Form.Field control={ Button } onClick={ this.handleOnSubmit }>Submit</Form.Field> }
-            
+            { this.props.currentStatus === 'userInfo' 
+              ? true 
+              : <Form.Field control={ Button } onClick={ this.handleOnSubmit }>Submit</Form.Field> 
+            }
           </Form>
         </Container>
       </div>
@@ -48,7 +52,8 @@ const mapDispatchToProps = dispatch => ({
   userLogin: bindActionCreators(userLogin, dispatch)
 })
 const mapStateToProps = state => ({
-  ...state.auth
+  ...state.auth,
+  ...state.dashboard
 })
 export default connect(
   mapStateToProps, 

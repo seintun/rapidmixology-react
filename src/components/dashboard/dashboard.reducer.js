@@ -9,10 +9,10 @@ const initialState = {
     "userId": null,
     "drink": {
       "tea_id": null,
-      "milk": null,
-      "sugar": null,
-      "ice": null,
-      "total": 0,
+      "milk": true,
+      "sugar": 1,
+      "ice": 1,
+      "total": 5.78,
       "toppings": []
     }
   }
