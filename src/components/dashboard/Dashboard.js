@@ -87,7 +87,6 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-
         <Segment>
           <OrderProgressBar
             orderProgressCSS={ this.props.orderProgressCSS }
