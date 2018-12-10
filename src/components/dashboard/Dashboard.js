@@ -11,33 +11,30 @@ import {
   customizeStep,
   userInfoStep,
   checkoutStep,
-  saveCustomizeDrink
+  saveCustomizeDrink,
+  checkoutOrder
 } from './dashboard.actions'
 import { userLogin } from '../auth/auth.actions'
 
 class Dashboard extends Component {
   state = {
     userLogin: [],
-    orders: {
-      "userId": null,
-      "drink": {
-        "tea_id": null,
-        "milk": true,
-        "sugar": 1,
-        "ice": 1,
-        "total": 5.78,
-        "toppings": []
-      }
+    drink: {
+      tea_id: null,
+      milk: true,
+      sugar: 1,
+      ice: 1,
+      total: 5.78,
+      toppings: []
     }
   }
   handleTeaChoice = (teaInfo) => {
     this.setState({ 
-      orders: {
-        drink: { 
-          ...this.state.orders.drink,
-          tea_id: teaInfo.id }
+      drink: { 
+        ...this.state.drink,
+        tea_id: teaInfo.id }
       }
-    })
+    )
   }
   handleToppingChoice = (toppingInfo) => {
     let toppingList = toppingInfo.map(topping => {
@@ -50,30 +47,26 @@ class Dashboard extends Component {
       return each
     })
     this.setState({ 
-      orders: {
-        drink: {
-          ...this.state.orders.drink,
-          toppings: toppingList
-        }
+      drink: {
+        ...this.state.drink,
+        toppings: toppingList
       }
     })
   }
   handleIngredientsChoice = (ingredientsInfo) => {
     const { milk, sugar, ice } = ingredientsInfo
     this.setState({ 
-      orders: {
-        drink: {
-          ...this.state.orders.drink,
-          milk: milk,
-          sugar: sugar,
-          ice: ice, 
-        }
+      drink: {
+        ...this.state.drink,
+        milk: milk,
+        sugar: sugar,
+        ice: ice, 
       }
     })
   }
   handleSaveCustomizeDrink = () => {
-    const { orders } = this.state
-    this.props.saveCustomizeDrink(orders)
+    const { drink } = this.state
+    this.props.saveCustomizeDrink(drink)
   }
   handleUserInfo = (userInfo) => {
     this.setState({ 
@@ -84,7 +77,15 @@ class Dashboard extends Component {
   handleLoginOnSubmit = () => {
     this.props.userLogin(this.state.userLogin)
   }
+  handlecheckoutOrder = () => {
+    let orders= {
+      userId: this.props.userLogs.user.id,
+      drink: this.props.drink
+    }
+    this.props.checkoutOrder(orders)
+  }
   render() {
+    // console.log(this.props, '$$$$$')
     return (
       <div>
         <Segment>
@@ -109,7 +110,10 @@ class Dashboard extends Component {
             ? <UserInfo handleUserInfo={ this.handleUserInfo } /> 
             : false }
           { this.props.currentStatus === 'checkout'
-            ?  <Checkout orders={ this.props.orders }/> 
+            ?  <Checkout 
+                drink={ this.props.drink } 
+                handlecheckoutOrder={ this.handlecheckoutOrder }
+              /> 
             : false }
         </Segment>
         <OrderNavigationFooter 
@@ -126,7 +130,8 @@ class Dashboard extends Component {
   }
 }
 const mapStateToProps  = state => ({
-  ...state.dashboard
+  ...state.dashboard,
+  ...state.auth
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -134,7 +139,8 @@ const mapDispatchToProps = dispatch => ({
   userInfoStep: () => dispatch(userInfoStep()),
   checkoutStep: () => dispatch(checkoutStep()),
   saveCustomizeDrink: bindActionCreators(saveCustomizeDrink, dispatch),
-  userLogin: bindActionCreators(userLogin, dispatch)
+  userLogin: bindActionCreators(userLogin, dispatch),
+  checkoutOrder: bindActionCreators(checkoutOrder, dispatch)
 })
 
 export default connect(

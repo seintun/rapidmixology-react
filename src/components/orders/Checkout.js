@@ -12,9 +12,9 @@ export default class Checkout extends Component {
         { token ? <LoggedInCheckoutAlert /> : <LoggedOutCheckoutAlert /> }
         <Segment>
           <Segment attached>
-            <CartItems orders={ this.props.orders }/>
+            <CartItems drink={ this.props.drink }/>
           </Segment>
-          <Button attached='bottom' animated positive>
+          <Button attached='bottom' animated positive onClick={ this.props.handlecheckoutOrder }>
             <Button.Content visible>Place Order</Button.Content>
             <Button.Content hidden>
               <Icon name='shop' />
