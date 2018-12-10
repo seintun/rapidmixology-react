@@ -3,6 +3,7 @@ Visit: https://rapidmixology.herokuapp.com
 [Github], [Heroku-React], [Heroku-API], [Trello]
 # Frontend: https://github.com/seintun/rapidmixology-frontend
 # Backend: https://github.com/seintun/rapidmixology-backend
+# Google Slide: https://docs.google.com/presentation/d/1C7ZV1ZZq_BXLG1jsVC0Bv5j6x6zvfh7Cdt_CHInHX00
 
 RapidMixology is a deployed mobile-focused customize your artisan teas service for 
 - Tea enthusiatics / casual boba lover
