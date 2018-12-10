@@ -1,44 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# RapidMixology (Explore and Experience curated artisan handpicked teas!)
+Visit: https://rapidmixology.herokuapp.com
+[Github], [Heroku-React], [Heroku-API], [Trello]
+# Frontend: https://github.com/seintun/v
+# Backend: https://github.com/seintun/rapidmixology-backend
 
-## Available Scripts
+RapidMixology is a deployed mobile-focused customize your artisan teas service for 
+- Tea enthusiatics / casual boba lover
+- explore handpicked tea options beforehand
+- customizable drinks through massive library of teas and toppings
+- save their favorite or pick recommended drinks on their next visit
 
-In the project directory, you can run:
+- Cafè owner
+- looking to reach and market their presence
+- facilitates and personalizes customer experience
+- decreas wait-time and overheads for ordering process
 
-### `npm start`
+# New Features!
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Added Carousel viewing on the restaurant listings to accomodate mobile's limited space
+- Added Settings for diners to edit their Name, user ID, password and email
+- Added abilities for diners to view their past order history
+- Added fetch orders for restaurant in admin access
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### ER Diagram Schema:
+![Image of ER Diagram Schema](screenshots/ERD.png)
+![Image of Mobile Front Page](screenshots/home.png)
+![Image of Guest Sidebar](screenshots/guest-sidebar.png)
+![Image of Logged-In Sidebar](screenshots/loggedin-sidebar.png)
+![Image of Customize Drink Component 1](screenshots/customize1.png)
+![Image of Customize Drink Component 2](screenshots/customize.2png)
+![Image of Integrated Login Component](screenshots/integrated-login.png)
+![Image of Checkout Confirmation Component](screenshots/checkout.png)
+![Image of Register Form](screenshots/register.png)
+![Image of Login Form](screenshots/login.png)
+### Preview:
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Tech
 
-### `npm run build`
+RapidMixology uses a number of languages, tools and libraries to work properly:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* HTML - Hypertext Markup Language
+* Semantic-UI - Another great stylesheet for React
+* JavaScript - React, React-DOM, React-Router
+* Redux
+* [Semanti-UI-React] - great UI boilerplate for modern web apps
+* [node.js] - evented I/O for the backend
+* [Express] - fast node.js network app framework
+* [Knex] - SQL query builder for Postgres
+* [Postgresql] - object-relational database management system
+* [Github] - free and open source distributed version control system
+* [Trello] - Project Planning
+* [Heroku-React] - Frontend deployed
+* [Heroku-API] - Backend deployed
+* [Imgur] - Image upload
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Eater24 requires [Node.js](https://nodejs.org/) to run.
 
-### `npm run eject`
+Install the dependencies and devDependencies and start the server.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```sh
+$ cd rapidmixology-frontend
+$ npm install
+$ npm start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[node.js]: <http://nodejs.org>
+[Semanti-UI-React]: <http://twitter.github.com/bootstrap/>
+[Express]: <http://expressjs.com>
+[Knex]: <https://knexjs.org/>
+[Postgresql]: <https://www.postgresql.org/>
+[Github]: <https://github.com/seintun>
+[Trello]: <https://trello.com/b/U4vdFnj4/q2-project>
+[Surge]: <http://eater24-proj02.surge.sh/>
+[Heroku-React]: <http://rapidmixology.herokuapp.com>
+[Heroku-API]: <https://rapidmixology-api.herokuapp.com/teas>
